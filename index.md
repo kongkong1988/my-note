@@ -1,8 +1,8 @@
 ---
-title: Colton's Lab Notebook
+title: Kongkong's Lab Notebook
 ---
 
 ## Notes
-[notes-template](./docs/week1.md)
+[WEEK1](./docs/week1.md)
 
 
