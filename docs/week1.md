@@ -7,7 +7,8 @@
   - 认识网页组成结构
   - 写出第一个网页
 
-- 📘 学习内容：  
+- 📘 学习内容：
+
   | 内容 | 推荐资源 |
   | :---: | :---: |
   | 什么是 HTML / CSS | [MDN HTML 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content) |
