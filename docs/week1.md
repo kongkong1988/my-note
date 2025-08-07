@@ -24,16 +24,15 @@
   - 明白 JavaScript 的作用
   - 实现按钮点击 → 弹窗
 
-📘 学习内容：
-内容	推荐资源
-JS 变量、函数、事件	B站或 MDN 的 JavaScript 入门
-浏览器控制台	按 F12 打开 DevTools 看 console.log
-onclick 事件绑定	B站 “原生JS入门” 教程
+- 📘 学习内容：
+  - 内容	推荐资源
+  - JS 变量、函数、事件	B站或 MDN 的 JavaScript 入门
+  - 浏览器控制台	按 F12 打开 DevTools 看 console.log
+  - onclick 事件绑定	B站 “原生JS入门” 教程
 
-🛠️ 练习任务：
-制作一个按钮：点击后弹出“你好，Web3！”
-
-学会用 console.log 打印数据
+- 🛠️ 练习任务：
+  - 制作一个按钮：点击后弹出“你好，Web3！”
+  - 学会用 console.log 打印数据
 
 📅 第 3 天：深入 JavaScript + 数组/对象
 🎯 目标：
