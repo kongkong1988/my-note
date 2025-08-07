@@ -1,5 +1,5 @@
 ---
-title: Kongkong's Lab Notebook
+title: Kongkong's Notebook
 ---
 
 ## Notes
