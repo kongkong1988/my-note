@@ -25,10 +25,12 @@
   - 实现按钮点击 → 弹窗
 
 - 📘 学习内容：
-  - 内容	推荐资源
-  - JS 变量、函数、事件	B站或 MDN 的 JavaScript 入门
-  - 浏览器控制台	按 F12 打开 DevTools 看 console.log
-  - onclick 事件绑定	B站 “原生JS入门” 教程
+
+| 内容 | 	推荐资源 |
+|:---:|:---:|
+|JS 变量、函数、事件| B站或 MDN 的 JavaScript 入门 |
+|浏览器控制台|	按 F12 打开 DevTools 看 console.log |
+|onclick 事件绑定|	B站 “原生JS入门” 教程 |
 
 - 🛠️ 练习任务：
   - 制作一个按钮：点击后弹出“你好，Web3！”
@@ -40,18 +42,19 @@
   - 能处理一组数据
 
 - 📘 学习内容：
-  - 内容	推荐资源
-  - 数组 / 对象 / 条件判断	MDN / 廖雪峰 JS教程
-  - for / if 等语法	练习中理解
+
+|内容|	推荐资源|
+|:---:|:--:|
+|数组 / 对象 / 条件判断	|MDN / 廖雪峰 JS教程|
+|for / if |等语法	练习中理解|
 
 - 🛠️ 练习任务：
   - 假设你有一个用户钱包地址数组，使用 for 打印所有地址
 
   js
-  
-  
-    let wallets = ["0x123", "0xabc", "0xdef"];
-  
+  ```
+  let wallets = ["0x123", "0xabc", "0xdef"];
+  ```
 ## 📅 第 4 天：区块链基本概念入门
 - 🎯 目标：
   - 明白什么是链、钱包、交易、Gas
@@ -79,6 +82,7 @@
   - 体验链上部署 & 调用
 
 - 📘 学习内容：
+
 | 内容 | 	推荐资源 |
 | :-: | :-: |
 | Remix 使用教学 | 	Remix 教程 |
@@ -87,7 +91,7 @@
 - 🛠️ 练习任务：
   - 打开 Remix，部署这个简单的合约：
 
-  solidity
+solidity
 ```
 // HelloWorld.sol
 pragma solidity ^0.8.0;
@@ -118,7 +122,7 @@ contract HelloWorld {
 - 🛠️ 练习任务：
   - 建立一个 HTML + JS 网页，点击按钮连接 MetaMask：
 
-  js
+js
 ```
 async function connectWallet() {
   if (window.ethereum) {
