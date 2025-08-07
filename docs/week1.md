@@ -86,13 +86,18 @@
 
 - 🛠️ 练习任务：
   - 打开 Remix，部署这个简单的合约：
-  
-    solidity
-    // HelloWorld.sol
-    pragma solidity ^0.8.0;
-    contract HelloWorld {
+
+  solidity
+```
+// HelloWorld.sol
+pragma solidity ^0.8.0;
+
+contract HelloWorld {
     string public message = "Hello, Web3!";
-    }
+}
+```
+  
+
   - 使用 MetaMask 切换测试网签名部署
 
   - 调用合约查看 message
@@ -114,22 +119,16 @@
   - 建立一个 HTML + JS 网页，点击按钮连接 MetaMask：
 
   js
-
-  async function connectWallet() {
-  
-    if (window.ethereum) {
-  
-      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-  
-      console.log("钱包地址：", accounts[0]);
-  
-    }  else {
-  
-        alert("请安装 MetaMask");
-  
-    }
-  
+```
+async function connectWallet() {
+  if (window.ethereum) {
+    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+    console.log("钱包地址：", accounts[0]);
+  } else {
+    alert("请安装 MetaMask");
   }
+}
+```
   
 ## 📅 第 7 天：第一周复习 + 项目整合
 - 🎯 目标：
@@ -138,23 +137,24 @@
   - 做一个「连接钱包 + 显示 ETH 地址 + 输出余额」的小项目
 
 - 🛠️ 练习项目结构：
+```
   html
 
-  `- index.html     // 网页结构`
-  `- style.css      // 页面样式`
-  `- script.js      // JavaScript逻辑`
-  
-  js
-
-  // script.js 示例片段
-  async function connectAndShowBalance() {
-    if (window.ethereum) {
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const accounts = await provider.send("eth_requestAccounts", []);
-      const balance = await provider.getBalance(accounts[0]);
-      alert(`地址：${accounts[0]}\n余额：${ethers.formatEther(balance)} ETH`);
-    }
+  - index.html     // 网页结构
+  - style.css      // 页面样式
+  - script.js      // JavaScript逻辑
+```
+js
+```
+async function connectAndShowBalance() {
+  if (window.ethereum) {
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const accounts = await provider.send("eth_requestAccounts", []);
+    const balance = await provider.getBalance(accounts[0]);
+    alert(`地址：${accounts[0]}\n余额：${ethers.formatEther(balance)} ETH`);
   }
+}  
+```
 ## 🎁 学完这一周，你将拥有：
 - 基础网页开发能力
 
