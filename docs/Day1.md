@@ -57,7 +57,7 @@
   - "头"里有什么——HTML元信息
 
 html
-````
+```
 <!doctype html>
 <html lang="zh-CN">
   <head>
@@ -68,7 +68,7 @@ html
     <p>这是我的页面</p>
   </body>
 </html>
-
+```
   - HTML的标题和段落
   - 强调与重要性
   - 列表
