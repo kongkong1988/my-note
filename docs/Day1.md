@@ -55,6 +55,20 @@
     - 明白为何需要在 HTML 文档顶部声明 doctype。了解历史缘由，但现在它在某种程度上已成为历史遗留。
     - 掌握 HTML 标签正确嵌套的规则
   - "头"里有什么——HTML元信息
+
+html
+````
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>我的测试页面</title>
+  </head>
+  <body>
+    <p>这是我的页面</p>
+  </body>
+</html>
+
   - HTML的标题和段落
   - 强调与重要性
   - 列表
