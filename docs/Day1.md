@@ -28,7 +28,7 @@
 - [软性技能(英语)](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Soft_skills)
 ## [*核心模块*](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core)
 ### 使用 HTML 构建内容
-1. HTML 基础语法  
+#### HTML 基础语法  
     前提:安装基础软件,并掌[握处理文件的基本知识](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files)  
     学习成果:
     - HTML 元素的剖析:元素、开始标签、内容、结束标签、属性。
@@ -54,7 +54,7 @@
     - 识别[空元素](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element),以及其与其他元素的区别.
     - 明白为何需要在 HTML 文档顶部声明 doctype。了解历史缘由，但现在它在某种程度上已成为历史遗留。
     - 掌握 HTML 标签正确嵌套的规则
-2. "头"里有什么——HTML元信息
+#### "头"里有什么——HTML元信息
 
 html
 ```
@@ -80,7 +80,7 @@ html
       ```
       <meta charset="utf-8" />
       ```
-3. HTML的标题和段落
+#### HTML的标题和段落
     - 标题和段落
       段落通过`<p>`元素进行定义,标题通过`<h1>`元素进行定义,一共有六种标题元素标签——h1、h2、h3、h4、h5和h6。分别代表不同级别的内容。
     - 实现结构层级
@@ -123,7 +123,7 @@ html
 - 为什么我们需要语义
   - 我们需要确保使用了正确的元素来给予内容正确的含义、作用以及外形。
 
-4. 强调与重要性
+#### 强调与重要性
 - 学习成果:
   - 强调和着重强调的含义，以及在 HTML 中应用它们的基本元素，如 `<em>` 和 `<strong>`。
   - 识别根本不应再使用的呈现性标记（例如 `<big>` 和 `<font>`），它们已经被弃用。
@@ -166,7 +166,7 @@ html
   <dd>根据元素的<b>语义</b>意义而不是外观来使用它们。</dd>
 </dl>
 ```
-5. 列表    
+#### 列表    
 - 学习成果：
   - 三种类型的列表的 HTML 结构——无序列表、有序列表和描述列表。
   - 每种列表类型的正确使用方法。
@@ -232,26 +232,26 @@ html
   </li>
 </ol>
 ``` 
-6. 构建文档
-7. 文本格式进阶
-8. 创建超链接
-9. 挑战:标记信件
-10. 挑战:构建网页内容
-11. HTML 中的图片
-12. 视频和音频内容
-13. Mozilla 欢迎页面
-14. HTML 表格基础
-15. HTML 表格进阶特性和无障碍
-16. 挑战:构建行星数据表
-17. Forms and buttons(英语)
-18. HTML 调试 
+#### 构建文档
+#### 文本格式进阶
+#### 创建超链接
+#### 挑战:标记信件
+#### 挑战:构建网页内容
+#### HTML 中的图片
+#### 视频和音频内容
+#### Mozilla 欢迎页面
+#### HTML 表格基础
+#### HTML 表格进阶特性和无障碍
+#### 挑战:构建行星数据表
+#### Forms and buttons(英语)
+#### HTML 调试 
 ### CSS 样式基础
-1. CSS 文本样式
-2. CSS 排版
-3. 使用 JavaScript 动态编码
-4. 无障碍
-5. 为开发人员设计(英语)
-6. 版本控制
+#### CSS 文本样式
+#### CSS 排版
+#### 使用 JavaScript 动态编码
+#### 无障碍
+#### 为开发人员设计(英语)
+#### 版本控制
 ## 扩展模块
 ### Advanced JavaScript objects
 ### 客户端 Web API
@@ -263,12 +263,12 @@ html
 ### 测试
 ## 更多资源及常见问题
 ### 如何解决常见问题
-  1. 解决常见 CSS 问题
-  2. 使用 HTML 解决常见问题
-  3. 解决 JavaScript 代码的常见问题
-  4. 设计与无障碍
-  5. 工具和安装
-  6. Web 机制
+#### 解决常见 CSS 问题
+#### 使用 HTML 解决常见问题
+#### 解决 JavaScript 代码的常见问题
+#### 设计与无障碍
+#### 工具和安装
+#### Web 机制
 ### 关于(英语)
 ### 面向教育工作者的资源(英语)
 ### 更新日志
