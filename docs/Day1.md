@@ -696,7 +696,7 @@ HTML
 #### HTML 表格进阶特性和无障碍
 #### 挑战:构建行星数据表
 #### Forms and buttons(英语)
-#### HTML 调试 
+#### [HTML 调试](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Debugging_HTML) 
 ### CSS 样式基础
 #### CSS 文本样式
 #### CSS 排版
