@@ -29,31 +29,31 @@
 ## [*核心模块*](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core)
 ### 使用 HTML 构建内容
 #### HTML 基础语法  
-    前提:安装基础软件,并掌[握处理文件的基本知识](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files)  
-    学习成果:
-    - HTML 元素的剖析:元素、开始标签、内容、结束标签、属性。
-      - HTML 文档由 HTML 元素定义。
-      - HTML元素语法
-        - HTML 元素以开始标签起始
-        - 元素内容
-        - HTML 元素以结束标签终止
-        - 某些 HTML 元素具有空内容（empty content）
-        - [空元素](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element)在开始标签中进行关闭（以开始标签的结束而结束）
-        - 大多数 HTML 元素可拥有属性
-      - 嵌套HTML元素
-        - 大多数HTML元素可以嵌套(HTML元素可以包含其他HTML元素).
-        - HTML文档由相互嵌套的HTML元素构成
-      - 元素的属性
-        - 属性是HTML元素提供的附加信息.
-        - 属性通常出现在HTML标签的开始标签中,用于定义元素的行为、样式、内容或其他特性.
-        - 属性总是以 name="value"的形式写在标签内,那么说属性的名称,value是属性的值.
-        - 属性值应该始终包括在引号内,常用双引号,不过使用单引号也没有问题.
-        - [HTML属性参考手册](https://www.runoob.com/html/html-attributes.html)
-        - [HTML标签参考手册](https://www.runoob.com/tags/html-reference.html)
-    - HTML body 及其作为页面内容容器的用途
-    - 识别[空元素](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element),以及其与其他元素的区别.
-    - 明白为何需要在 HTML 文档顶部声明 doctype。了解历史缘由，但现在它在某种程度上已成为历史遗留。
-    - 掌握 HTML 标签正确嵌套的规则
+前提:安装基础软件,并掌[握处理文件的基本知识](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files)  
+- 学习成果:
+  - HTML 元素的剖析:元素、开始标签、内容、结束标签、属性。
+    - HTML 文档由 HTML 元素定义。
+    - HTML元素语法
+      - HTML 元素以开始标签起始
+      - 元素内容
+      - HTML 元素以结束标签终止
+      - 某些 HTML 元素具有空内容（empty content）
+      - [空元素](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element)在开始标签中进行关闭（以开始标签的结束而结束）
+      - 大多数 HTML 元素可拥有属性
+    - 嵌套HTML元素
+      - 大多数HTML元素可以嵌套(HTML元素可以包含其他HTML元素).
+      - HTML文档由相互嵌套的HTML元素构成
+    - 元素的属性
+      - 属性是HTML元素提供的附加信息.
+      - 属性通常出现在HTML标签的开始标签中,用于定义元素的行为、样式、内容或其他特性.
+      - 属性总是以 name="value"的形式写在标签内,那么说属性的名称,value是属性的值.
+      - 属性值应该始终包括在引号内,常用双引号,不过使用单引号也没有问题.
+      - [HTML属性参考手册](https://www.runoob.com/html/html-attributes.html)
+      - [HTML标签参考手册](https://www.runoob.com/tags/html-reference.html)
+  - HTML body 及其作为页面内容容器的用途
+  - 识别[空元素](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element),以及其与其他元素的区别.
+  - 明白为何需要在 HTML 文档顶部声明 doctype。了解历史缘由，但现在它在某种程度上已成为历史遗留。
+  - 掌握 HTML 标签正确嵌套的规则
 #### "头"里有什么——HTML元信息
 
 html
