@@ -1,5 +1,7 @@
 # CSS入门教程
 
+## CSS 样式基础
+
 - 指南:
 
   - [层叠与继承](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
@@ -58,7 +60,7 @@
  
     - 当你开始处理更大的样式表和项目时，你将会发现维护一个庞大的样式表非常具有挑战性。在这篇文章中，我们将会简要了解使得 CSS 易于维护的最佳做法，以及其他人所使用的一些有助于增进可维护性的解决方案。
  
-## CSS 样式基础
+
 
 ## CSS 文本样式
 ## CSS 排版
