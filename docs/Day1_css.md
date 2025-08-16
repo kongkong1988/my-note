@@ -420,6 +420,10 @@ p {
 |:---:|:---:|:---:|
 |serif|衬线字体，即有衬线的字体（衬线是指字体笔画尾端的小装饰，存在于某些印刷体字体中）。| <span style="font-family: serif;">My big red elephant</span> |
 |sans-serif|无衬线字体| <span style="font-family: sans-serif;">My big red elephant</span> |
+|monospace|等宽字体，指包含的全部字符的宽度相同的字体，通常在编辑代码时使用。| <span style="font-family: monospace;">My big red elephant</span> |
+|cursive|	手写字体，对于英文字符而言通常具有顺滑的连接笔画以模拟手写效果。| <span style="font-family: cursive;">My big red elephant</span> |
+|fantasy|		装饰字体。| <span style="font-family: fantasy;">My big red elephant</span> |
+
 
 - 
 ## CSS 排版
