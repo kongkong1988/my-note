@@ -195,9 +195,7 @@ HTML
 <link rel="stylesheet" href="styles.css" />
 ```
 
-```
-<link> 语句块里面，我们用属性 rel，让浏览器知道有 CSS 文档存在（所以需要遵守 CSS 样式的规定），并利用属性 href 指定，寻找 CSS 文件的位置。你可以做测试来验证 CSS 是否有效：在 styles.css 里面加上 CSS 样式并观察显示的结果。下面，用你的编辑器打出下面的代码。
-```
+`<link>`语句块里面，我们用属性 rel，让浏览器知道有 CSS 文档存在（所以需要遵守 CSS 样式的规定），并利用属性 href 指定，寻找 CSS 文件的位置。你可以做测试来验证 CSS 是否有效：在 styles.css 里面加上 CSS 样式并观察显示的结果。下面，用你的编辑器打出下面的代码。
 
 CSS
 
@@ -323,7 +321,106 @@ h1 + p {
   font-size: 200%;
 }
 ```
+
+
 ## CSS 文本样式
+
+- 导引
+
+  - [基本的文本以及字体样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Fundamentals)
+
+在本文章中，我们将通篇了解文本、字体样式的所有基础，包括设置字体粗细（font weight）、字体系列及样式（family and style）、字体缩写（font shorthand）、文本排列（text alignment）和其他的效果，还有行（line）以及字符间距（letter spacing）。
+
+  - [样式化](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Styling_lists)
+
+对于大部分内容来说，列表的行为表现跟其他任何文本其实差不多，但你也需要了解还有一些专门用于列表的 CSS 样式以及考虑一些最好的实践方式。本文章将阐释这一切。
+
+  - [样式化链接](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Styling_links)
+
+当你为链接添加样式时，很重要的一点是要去理解怎样有效地使用伪类去修饰链接的状态，以及怎么去修饰不同的接口功能例如导航菜单和面板中所使用的链接。我们将会在这篇文章中讨论这些话题。
+
+  - [网络字体](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Web_fonts)
+
+在这里我们将会详细地探索网络字体——这会允许你与你的网页一同下载自定义字体，来实现更为不同的个性化字体样式。
+
+### 基本文本和字体样式
+
+目标:了解在网页上设计文本所需的基本属性和技术
+
+- CSS中的文字样式设计什么
+
+  - **字体样式:** 作用域字体的属性,会直接应用到文本中,比如使用哪种字体,字体的大小是怎样的,字体是粗体还是斜体,等等.
+ 
+  - **文本布局风格:** 作用于文本的间距以及其他布局功能的属性,比如,允许操行与字之间的空间,以及在内容框中,文本如何对齐.
+ 
+    ***备注:*** 请记住，包含在元素中的文本是作为一个单一的实体。你不能将文字其中一部分选中或添加样式，如果你要这么做，那么你必须要用适合的元素来包装它们，比如 ( `<span>` 或者 `<strong>`), 或者使用伪元素，像::first-letter (选中元素文本的第一个字母), ::first-line (选中元素文本的第一行), 或者 ::selection (当前光标双击选中的文本)
+
+- 字体
+
+HTML
+
+```
+<h1>Tommy the cat</h1>
+
+<p>I remember as if it were a meal ago...</p>
+
+<p>
+  Said Tommy the Cat as he reeled back to clear whatever foreign matter may have
+  nestled its way into his mighty throat. Many a fat alley rat had met its
+  demise while staring point blank down the cavernous barrel of this awesome
+  prowling machine. Truly a wonder of nature this urban predator — Tommy the cat
+  had many a story to tell. But it was a rare occasion such as this that he did.
+</p>
+```
+
+- 颜色
+
+color 属性设置选中元素的前景内容的颜色 (通常指文本，不过也包含一些其他东西，或者是使用 text-decoration 属性放置在文本下方或上方的线 (underline overline)。
+
+CSS
+
+```
+p {
+  color: red;
+}
+```
+
+- 字体种类
+
+要在你的文本上设置一个不同的字体，你可以使用 font-family 属性，这个允许你为浏览器指定一个字体 (或者一个字体的列表)，然后浏览器可以将这种字体应用到选中的元素上。浏览器只会把在当前机器上可用的字体应用到当前正在访问的网站上；如果字体不可用，那么就会用浏览器默认的字体代替 default font.
+
+CSS
+
+```
+p {
+  font-family: arial;
+}
+```
+
+- 网页安全字体
+
+说到字体可用性，只有某几个字体通常可以应用到所有系统，因此可以毫无顾忌地使用。这些都是所谓的**网页安全字体**。
+
+|字体名称|泛型|注意|
+|:---:|:---:|:---:|
+|Arial|sans-serif|通常认为最佳做法还是添加 Helvetica 作为 Arial 的首选替代品，尽管它们的字体面几乎相同，但 Helvetica 被认为具有更好的形状，即使 Arial 更广泛地可用。|
+|Courier New|monospace|某些操作系统有一个 Courier New 字体的替代（可能较旧的）版本叫 Courier。使用 Courier New 作为 Courier 的首选替代方案，被认为是最佳做法。|
+|Georgia|serif||
+|Times New Roman|serif|某些操作系统有一个 Times New Roman 字体的替代（可能较旧的）版本叫 Times。使用 Times 作为 Times New Roman 的首选替代方案，被认为是最佳做法。|
+|Trebuchet MS|sans-serif|	你应该小心使用这种字体——它在移动操作系统上并不广泛。|
+|Verdana|sans-serif||
+
+***备注:*** 在各种资源中，cssfontstack.com 网站维护了一个可用在 Windows 和 Mac 操作系统上使用的网页安全字体的列表，这可以帮助决策网站的安全性。
+
+***备注:*** 有一个可以下载来自一个网页的自定义字体的方法,允许你通过任何你想要的方法来定制你使用的字体:**网页字体**。
+
+- 默认字体
+
+|名称|定义|示例|
+|:---:|:---:|:---:|
+|serif|衬线字体，即有衬线的字体（衬线是指字体笔画尾端的小装饰，存在于某些印刷体字体中）。|<span style="font-family: serif;">My big red elephant</span>|
+
+- 
 ## CSS 排版
 ## 使用 JavaScript 动态编码
 ## 无障碍
