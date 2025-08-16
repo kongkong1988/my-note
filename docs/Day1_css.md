@@ -418,7 +418,8 @@ p {
 
 |名称|定义|示例|
 |:---:|:---:|:---:|
-|serif|衬线字体，即有衬线的字体（衬线是指字体笔画尾端的小装饰，存在于某些印刷体字体中）。|<span style="font-family: serif;">My big red elephant</span>|
+|serif|衬线字体，即有衬线的字体（衬线是指字体笔画尾端的小装饰，存在于某些印刷体字体中）。| <span style="font-family: serif;">My big red elephant</span> |
+|sans-serif|无衬线字体| <span style="font-family: sans-serif;">My big red elephant</span> |
 
 - 
 ## CSS 排版
