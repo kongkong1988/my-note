@@ -424,8 +424,234 @@ p {
 |cursive|	手写字体，对于英文字符而言通常具有顺滑的连接笔画以模拟手写效果。| <span style="font-family: cursive;">My big red elephant</span> |
 |fantasy|		装饰字体。| <span style="font-family: fantasy;">My big red elephant</span> |
 
+- 字体栈
 
-- 
+由于你无法保证你想在你的网页上使用的字体的可用性 (甚至一个网络字体可能由于某些原因而出错), 你可以提供一个字体栈 (font stack)，这样的话，浏览器就有多种字体可以选择了。
+
+CSS
+
+```
+p {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+```
+
+***备注:*** 有一些字体名称不止一个单词，比如Trebuchet MS ，那么就需要用引号包裹。
+
+- 字体大小
+
+  - px (像素): 将像素的值赋予给你的文本。这是一个绝对单位，它导致了在任何情况下，页面上的文本所计算出来的像素值都是一样的。
+  - em: 1em 等于我们设计的当前元素的父元素上设置的字体大小 (更加具体的话，比如包含在父元素中的大写字母 M 的宽度) 如果你有大量设置了不同字体大小的嵌套元素，这可能会变得棘手，但它是可行的，如下图所示。为什么要使用这个麻烦的单位呢？当你习惯这样做时，那么就会变得很自然，你可以使用em调整任何东西的大小，不只是文本。你可以有一个单位全部都使用 em 的网站，这样维护起来会很简单。
+  - rem: 这个单位的效果和 em 差不多，除了 1rem 等于 HTML 中的根元素的字体大小， (i.e. <html>) ，而不是父元素。这可以让你更容易计算字体大小，但是遗憾的是， rem 不支持 Internet Explorer 8 和以下的版本。如果你的项目需要支持较老的浏览器，你可以坚持使用em 或 px, 或者是 polyfill 就像 REM-unit-polyfill. （这个单位在“CSS 的值和单位”一节也有讲解）
+
+元素的 font-size 属性是从该元素的父元素继承的。所以这一切都是从整个文档的根元素——<html>开始，浏览器的 font-size 标准设置的值为 16px
+
+HTML
+
+```
+<!-- document base font-size is 16px -->
+<article>
+  <!-- If my font-size is 1.5em -->
+  <p>My paragraph</p>
+  <!-- How do I compute to 20px font-size? -->
+</article>
+```
+
+一个简单的 size 示例
+
+CSS
+
+```
+html {
+  font-size: 10px;
+}
+
+h1 {
+  font-size: 2.6rem;
+}
+
+p {
+  font-size: 1.4rem;
+  color: red;
+  font-family: Helvetica, Arial, sans-serif;
+}
+```
+
+
+- 字体样式、字体粗细、文本转换和文本装饰
+
+  - font-style: 用来打开和关闭文本 italic (斜体)。可能的值如下 (你很少会用到这个属性，除非你因为一些理由想将斜体文字关闭斜体状态)：
+ 
+    - normal: 将文本设置为普通字体 (将存在的斜体关闭)
+    - italic: 如果当前字体的斜体版本可用，那么文本设置为斜体版本；如果不可用，那么会利用 oblique 状态来模拟 italics。
+    - oblique: 将文本设置为斜体字体的模拟版本，也就是将普通文本倾斜的样式应用到文本中。
+ 
+  - font-weight: 设置文字的粗体大小。这里有很多值可选 (比如 -light, -normal, -bold, -extrabold, -black, 等等), 不过事实上你很少会用到 normal 和 bold以外的值：
+ 
+    - normal, bold: 普通或者加粗的字体粗细
+    - lighter, bolder: 将当前元素的粗体设置为比其父元素粗体更细或更粗一步。100–900: 数值粗体值，如果需要，可提供比上述关键字更精细的粒度控制。
+ 
+  - text-transform: 允许你设置要转换的字体。值包括：
+ 
+    - none: 防止任何转型。
+    - uppercase: 将所有文本转为大写。
+    - lowercase: 将所有文本转为小写。
+    - capitalize: 转换所有单词让其首字母大写。
+    - full-width: 将所有字形转换成全角，即固定宽度的正方形，类似于等宽字体，允许拉丁字符和亚洲语言字形（如中文，日文，韩文）对齐。
+ 
+  - text-decoration: 设置/取消字体上的文本装饰 (你将主要使用此方法在设置链接时取消设置链接上的默认下划线。) 可用值为：
+ 
+    - none: 取消已经存在的任何文本装饰。
+    - underline: 文本下划线。
+    - overline: 文本上划线
+    - line-through: 穿过文本的线。
+
+你应该注意到 text-decoration 可以一次接受多个值，如果你想要同时添加多个装饰值，比如 text-decoration: underline overline.。同时注意 text-decoration 是一个缩写形式，它由 text-decoration-line, text-decoration-style 和 text-decoration-color 构成。
+
+我们来看一下这几个属性添加到我们的例子中：
+
+CSS
+
+```
+html {
+  font-size: 10px;
+}
+
+h1 {
+  font-size: 2.6rem;
+  text-transform: capitalize;
+}
+
+h1 + p {
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.4rem;
+  color: red;
+  font-family: Helvetica, Arial, sans-serif;
+}
+```
+
+ - 文字阴影
+
+你可以为你的文本应用阴影，使用 text-shadow 属性。这最多需要 4 个值，如下例所示：
+
+CSS
+
+```
+text-shadow: 4px 4px 5px red;
+```
+
+4个属性如下:
+
+1. 阴影与原始文本的水平偏移，可以使用大多数的 CSS 单位 length and size units, 但是 px 是比较合适的。这个值必须指定。
+2. 阴影与原始文本的垂直偏移;效果基本上就像水平偏移，除了它向上/向下移动阴影，而不是左/右。这个值必须指定。
+3. 模糊半径 - 更高的值意味着阴影分散得更广泛。如果不包含此值，则默认为 0，这意味着没有模糊。可以使用大多数的 CSS 单位 length and size units.
+4. 阴影的基础颜色，可以使用大多数的 CSS 颜色单位 CSS color unit. 如果没有指定，默认为 black.
+
+***备注:*** 正偏移值可以向右移动阴影，但也可以使用负偏移值来左右移动阴影，例如 -1px -1px.
+
+ - 多种阴影
+
+你可以通过包含以逗号分隔的多个阴影值，将多个阴影应用于同一文本，例如：
+
+CSS
+
+```
+text-shadow:
+  -1px -1px 1px #aaa,
+  0px 4px 1px rgba(0, 0, 0, 0.5),
+  4px 4px 5px rgba(0, 0, 0, 0.7),
+  0px 0px 7px rgba(0, 0, 0, 0.4);
+```
+
+***备注:*** 你可以看到更多有趣的关于 text-shadow 使用的示例在 Moonlighting with CSS text-shadow.
+
+- 文本布局
+
+有了基本的字体属性，我们来看看我们可以用来影响文本布局的属性。
+  
+  - 文本对齐
+
+text-align 属性用来控制文本如何和它所在的内容盒子对齐。可用值如下，并且在与常规文字处理器应用程序中的工作方式几乎相同：
+
+    - left:左对齐文本.
+    - right:右对齐文本
+    - center:居中文字
+    - justify:使文本展开，改变单词之间的差距，使所有文本行的宽度相同。你需要仔细使用，它可以看起来很可怕。特别是当应用于其中有很多长单词的段落时。如果你要使用这个，你也应该考虑一起使用别的东西，比如 hyphens，打破一些更长的词语。
+  
+  - 行高
+
+line-height 属性设置文本每行之间的高，可以接受大多数单位 length and size units，不过也可以设置一个无单位的值，作为乘数，通常这种是比较好的做法。无单位的值乘以 font-size 来获得 line-height。当行与行之间拉开空间，正文文本通常看起来更好更容易阅读。推荐的行高大约是 1.5–2 (双倍间距。) 所以要把我们的文本行高设置为字体高度的 1.5 倍，你可以使用这个：
+
+CSS
+
+```
+line-height: 1.5;
+```
+
+  - 字母和单词间距
+
+letter-spacing 和 word-spacing 属性允许你设置你的文本中的字母与字母之间的间距、或是单词与单词之间的间距。你不会经常使用它们，但是可能可以通过它们，来获得一个特定的外观，或者让较为密集的文字更加可读。它们可以接受大多数单位 length and size units.
+
+CSS
+
+```
+p::first-line {
+  letter-spacing: 2px;
+  word-spacing: 4px;
+}
+```
+
+  - 其他属性
+
+    - font 样式:
+      - font-variant: 在小型大写字母和普通文本选项之间切换。
+      - font-kerning: 开启或关闭字体间距选项。
+      - font-feature-settings: 开启或关闭不同的 [OpenType](https://en.wikipedia.org/wiki/OpenType) 字体特性。
+      - font-variant-alternates: 控制给定的自定义字体的替代字形的使用。
+      - font-variant-caps: 控制大写字母替代字形的使用。
+      - font-variant-east-asian: 控制东亚文字替代字形的使用，像日语和汉语。
+      - font-variant-ligatures: 控制文本中使用的连写和上下文形式。
+      - font-variant-numeric: 控制数字，分式和序标的替代字形的使用。
+      - font-variant-position: 控制位于上标或下标处，字号更小的替代字形的使用。
+      - font-size-adjust: 独立于字体的实际大小尺寸，调整其可视大小尺寸。
+      - font-stretch: 在给定字体的可选拉伸版本中切换。
+      - text-underline-position: 指定下划线的排版位置，通过使用 text-decoration-line 属性的underline 值。
+      - text-rendering: 尝试执行一些文本渲染优化。
+     
+    - 文本布局样式：
+      -  text-indent: 指定文本内容的第一行前面应该留出多少的水平空间。
+      -  text-overflow: 定义如何向用户表示存在被隐藏的溢出内容。
+      -  white-space: 定义如何处理元素内部的空白和换行。
+      -  word-break: 指定是否能在单词内部换行。
+      -  direction: 定义文本的方向 (这取决于语言，并且通常最好让 HTML 来处理这部分，因为它是和文本内容相关联的。)
+      -  hyphens: 为支持的语言开启或关闭连字符。
+      -  line-break: 对东亚语言采用更强或更弱的换行规则。
+      -  text-align-last: 定义一个块或行的最后一行，恰好位于一个强制换行前时，如何对齐。
+      -  text-orientation: 定义行内文本的方向。
+      -  word-wrap: 指定浏览器是否可以在单词内换行以避免超出范围。
+      -  writing-mode: 定义文本行布局为水平还是垂直，以及后继文本流的方向。
+     
+- Font 简写
+
+许多字体的属性也可以通过 font 的简写方式来设置 . 这些是按照以下顺序来写的： font-style, font-variant, font-weight, font-stretch, font-size, line-height, and font-family.
+
+如果你想要使用 font 的简写形式，在所有这些属性中，只有 font-size 和 font-family 是一定要指定的。
+
+font-size 和 line-height 属性之间必须放一个正斜杠。
+
+CSS
+
+```
+font:
+  italic normal bold normal 3em/1.5 Helvetica,
+  Arial,
+  sans-serif;
+```
+     
+      
 ## CSS 排版
 ## 使用 JavaScript 动态编码
 ## 无障碍
