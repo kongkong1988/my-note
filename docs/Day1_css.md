@@ -651,7 +651,202 @@ font:
   sans-serif;
 ```
      
-      
+### 为列表添加字体样式
+
+- 默认延时的预设值
+
+  - `<ul> 和 <ol> 元素含有 16px（1em）的顶部和底部 margin 和 40px（2.5em）的 padding-left。`
+  - `列表项（<li> 元素）默认是没有设置间距的。`
+  - `<dl> 元素设置含有 16px（1em）的顶部和底部 margin，但不含内边距。`
+  - `<dd> 元素含有 40px（2.5em）的 margin-left。`
+  - `在参考中提到的 <p> 元素设置含有 16px（1em）的顶部和底部 margin——与其他的列表类型相同。`
+ 
+- 处理列表间距
+
+CSS
+
+```
+/* 通用样式 */
+
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10px;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+ul,
+ol,
+dl,
+p {
+  font-size: 1.5rem;
+}
+
+li,
+p {
+  line-height: 1.5;
+}
+
+/* 描述列表样式 */
+
+dd,
+dt {
+  line-height: 1.5;
+}
+
+dt {
+  font-weight: bold;
+}
+```
+
+- 列表特定样式
+
+   - list-style-type：设置用于列表的项目符号的类型，例如无序列表的方形或圆形项目符号，或有序列表的数字、字母或罗马数字。
+   - list-style-position：设置在每个项目开始之前，项目符号是出现在列表项内，还是出现在其外。
+   - list-style-image：允许为项目符号使用自定义图片，而不是简单的方形或圆形。
+     
+  - 符号样式
+
+像上面所提及的，list-style-type 属性允许你设置项目符号的类型，在我们的示例中，我们在有序列表上设置了大写罗马数字：
+
+CSS
+
+```
+ol {
+  list-style-type: upper-roman;
+}
+```
+
+  - 项目符号位置
+
+list-style-position 设置在每个项目开始之前，项目符号是出现在列表项内，还是出现在其外。如上所示，默认值为 outside，这使项目符号位于列表项之外。
+
+如果值设置为 inside，项目符号则位于行内。
+
+CSS
+
+```
+ol {
+  list-style-type: upper-roman;
+  list-style-position: inside;
+}
+```
+
+  - 使用自定义的项目符号图片
+
+list-style-image 属性允许对于项目符号使用自定义图片。其语法相当简单：
+
+CSS
+
+```
+ul {
+  list-style-image: url(star.svg);
+}
+```
+
+然而，这个属性在控制项目符号的位置，大小等方面是有限的。最好使用 background 系列属性，你将在背景和边框文章中了解更多信息。在这里我们仅做一点尝试！
+
+在我们的示例中，我们的无序列表最终样式像这样（在之前所见的顶部）：
+
+CSS
+
+```
+ul {
+  padding-left: 2rem;
+  list-style-type: none;
+}
+
+ul li {
+  padding-left: 2rem;
+  background-image: url(star.svg);
+  background-position: 0 0;
+  background-size: 1.6rem 1.6rem;
+  background-repeat: no-repeat;
+}
+```
+  
+  - list-style 简写
+
+上述提到的三种属性可以用一个单独的简写属性 list-style 来设置。例如，以下 CSS：
+
+CSS
+
+```
+ul {
+  list-style-type: square;
+  list-style-image: url(example.png);
+  list-style-position: inside;
+}
+```
+
+可以被如下方式代替：
+
+```
+ul {
+  list-style: square url(example.png) inside;
+}
+```
+
+- 管理列表计数
+
+  - start
+
+start 属性允许你从 1 以外的数字开始计数。以下示例：
+
+HTML
+
+```
+<ol start="4">
+  <li>Toast pita, leave to cool, then slice down the edge.</li>
+  <li>
+    Fry the halloumi in a shallow, non-stick pan, until browned on both sides.
+  </li>
+  <li>Wash and chop the salad.</li>
+  <li>Fill pita with salad, hummus, and fried halloumi.</li>
+</ol>
+```
+
+  - reversed
+
+reversed 属性将使列表反向计数。以下示例：
+
+HTML
+
+```
+<ol start="4" reversed>
+  <li>Toast pita, leave to cool, then slice down the edge.</li>
+  <li>
+    Fry the halloumi in a shallow, non-stick pan, until browned on both sides.
+  </li>
+  <li>Wash and chop the salad.</li>
+  <li>Fill pita with salad, hummus, and fried halloumi.</li>
+</ol>
+```
+
+***备注:*** 如果反向计数的列表项数比 start 属性的值还要多，计数将继续到零并向负数方向增加。
+
+  - value
+
+value 属性允许设置列表项指定数值，以下示例：
+
+HTML
+
+```
+<ol>
+  <li value="2">Toast pita, leave to cool, then slice down the edge.</li>
+  <li value="4">
+    Fry the halloumi in a shallow, non-stick pan, until browned on both sides.
+  </li>
+  <li value="6">Wash and chop the salad.</li>
+  <li value="8">Fill pita with salad, hummus, and fried halloumi.</li>
+</ol>
+```
+
+  - 
+
+
 ## CSS 排版
 ## 使用 JavaScript 动态编码
 ## 无障碍
