@@ -844,10 +844,174 @@ HTML
 </ol>
 ```
 
-  - 
+  - reversed
+
+reversed 属性将使列表反向计数。以下示例：
+
+HTML
+
+```
+<ol start="4" reversed>
+  <li>Toast pita, leave to cool, then slice down the edge.</li>
+  <li>
+    Fry the halloumi in a shallow, non-stick pan, until browned on both sides.
+  </li>
+  <li>Wash and chop the salad.</li>
+  <li>Fill pita with salad, hummus, and fried halloumi.</li>
+</ol>
+```
+
+***备注:*** 如果反向计数的列表项数比 start 属性的值还要多，计数将继续到零并向负数方向增加。
+
+  - value
+
+HTML
+
+
+```
+<ol>
+  <li value="2">Toast pita, leave to cool, then slice down the edge.</li>
+  <li value="4">
+    Fry the halloumi in a shallow, non-stick pan, until browned on both sides.
+  </li>
+  <li value="6">Wash and chop the salad.</li>
+  <li value="8">Fill pita with salad, hummus, and fried halloumi.</li>
+</ol>                 
+```
 
 
 ## CSS 排版
+
+### 样式化链接
+
+**目标:** 学习如何样式应用到链接状态,以及如何使用链接实现常见的 UI 功能,比如导航菜单.
+
+- 链接
+
+在[创建超链接](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Creating_links)一文中，我们了解了如何根据最佳实践在 HTML 中实现链接。在本文中，我们将以这些知识为基础，向你展示为超链接设计样式的最佳做法。
+
+  - 连接状态
+
+    - Link：有目的地的链接（即不只是一个具名锚点），使用 :link 伪类来应用样式。
+    - Visited：已访问过（存在于浏览器历史记录中）的链接，使用 :visited 伪类来应用样式。
+    - Hover：被用户鼠标指针悬停的链接，使用 :hover 伪类来应用样式。
+    - Focus：被选中的链接（比如通过键盘的 Tab 移动到这个链接，或者使用像 HTMLElement.focus() 这样的方法编程地聚焦链接），使用 :focus 伪类来应用样式。
+    - Active：激活（如点击）的链接，使用 :active 伪类来应用样式。
+
+  - 默认样式
+
+    - 链接以下划线表示。
+    - 未访问链接为蓝色。
+    - 已访问链接为紫色。
+    - 悬停链接时，鼠标指针会变成一个小手图标。
+    - 聚焦链接的周围有一个轮廓——按下键盘上的制表符键，就能聚焦本页面上的链接。（在 Mac 上，需要使用 option + tab，或通过按下 Ctrl + F7 启用全键盘控制选项。
+    - 活动链接为红色。尝试在点击链接时按住鼠标键。
+   
+HTML
+
+```
+<p><a href="#">一个简单的链接</a></p>
+```
+
+CSS
+
+```
+p {
+  font-size: 2rem;
+  text-align: center;
+}
+```
+
+***备注:*** 备注： 本页中的所有链接示例都链接到窗口顶部。空片段（href="#"）用于创建简单示例，并确保每个包含在 <iframe> 中的实时示例不会中断。
+
+  - 可以使用以下 CSS 属性关闭/更改默认样式：
+    - color 以改变文字的颜色。
+    - cursor 以改变鼠标光标的样式，除非有非常充分的理由，否则不应关闭此功能。
+    - outline 以改变文字的轮廓。轮廓有点像边框，唯一的区别是边框占用了盒模型的空间，而轮廓没有；它只是设置在背景图片的顶部。轮廓是一种有用的无障碍辅助工具，因此如果不增加另一种表示重点链接的方法，就不应删除轮廓。
+   
+  - 将样式应用到一些链接
+
+### Web 字体
+
+**目标:** 学习如何将 web 字体应用到 web 页面,使用第三方服务,或者编写自己的代码.
+
+- 字体种类回顾
+
+正如我们在基本文本和字体样式中所看到的那样，应用到你的 HTML 的字体可以使用 font-family属性来控制。你需要提供一个或多个字体种类名称，浏览器会在列表中搜寻，直到找到它所运行的系统上可用的字体。
+
+CSS
+
+```
+p {
+  font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
+}
+````
+
+这个系统运行良好，但是对于传统的 web 开发人员来说，字体选择是有限的。只有少数几种字体可以保证兼容所有流行的操作系统——这就是所谓的 Web 安全字体。你可以使用字体堆栈来指定可选择的字体，后面是 Web 安全的替代选项，然后是默认的系统字体，但是为了确保你的设计在每种字体中都显示正常，这样增加了测试的开销。
+
+- Web 字体
+
+首先，在 CSS 的开始处有一个@font-face块，它指定要下载的字体文件：
+
+CSS
+
+```
+@font-face {
+  font-family: "myFont";
+  src: url("myFont.ttf");
+}
+```
+
+在这个下面，你可以使用 @font-face 中指定的字体种类名称来将你的定制字体应用到你喜欢的任何东西上，比如说：
+
+CSS
+
+```
+html {
+  font-family: "myFont", "Bitstream Vera Serif", serif;
+}
+```
+
+关于网页字体有两件重要的事情要记住:
+
+1. 浏览器支持不同的字体格式，因此你需要多种字体格式以获得良好的跨浏览器支持。例如，大多数现代浏览器都支持 WOFF / WOFF2(Web Open Font Format versions 1 and 2，Web 开放字体格式版本 1 和 2)，它是最有效的格式，但是旧版本 IE 只支持 EOT (Embedded Open Type，嵌入式开放类型) 的字体，你可能需要包括一个 SVG 版本的字体支持旧版本的 iPhone 和 Android 浏览器。我们将向你展示如何生成所需的代码。
+2. 字体一般都不能自由使用。你必须为他们付费，或者遵循其他许可条件，比如在代码中 (或者在你的站点上) 提供字体创建者。你不应该在没有适当的授权的情况下偷窃字体。
+
+***备注:*** Web 字体作为一种技术从 Internet Explorer 4 开始就得到了的支持！
+
+- 自主学习:web 字体示例
+
+  - 查找字体
+ 
+    - 免费的字体经销商：这是一个可以下载免费字体的网站 (可能还有一些许可条件，比如对字体创建者的信赖)。比如： Font [Squirre](https://www.fontsquirrel.com/)，[dafont](http://www.dafont.com/) 和 [Everything Fonts](https://everythingfonts.com/)。
+    - 收费的字体经销商：这是一个收费则字体可用的网站，例如[fonts.com](http://www.fonts.com/)或[myfonts.com](http://www.myfonts.com/)。你也可以直接从字体铸造厂中购买字体，例如[Linotype](https://www.linotype.com/)，[Monotype](http://www.monotype.com/) 或 [Exljbris](http://www.exljbris.com/)。
+    - 在线字体服务：这是一个存储和为你提供字体的网站，它使整个过程更容易。更多细节见[使用在线字体服务](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Web_fonts#%E4%BD%BF%E7%94%A8%E5%9C%A8%E7%BA%BF%E5%AD%97%E4%BD%93%E6%9C%8D%E5%8A%A1)。
+   
+***备注:*** 在右边栏的“查找字体”部分中，你可以单击不同的标记和分类来筛选显示的选项。
+   
+  - 生成所需代码
+
+    1. 确保你已经满足了任何许可证的要求，如果你打算在一个商业和/或 Web 项目中使用它。
+    2. 前往 Fontsquirrel [Webfont Generator](https://www.fontsquirrel.com/tools/webfont-generator).
+    3. 使用上传字体按钮上传你的两个字体文件。
+    4. 勾选复选框，“是的，我上传的字体符合网络嵌入的合法条件。
+    5. 点击下载你的套件（kit）。
+  
+  - 在演示中实现代码
+
+    - 每个字体的多个版本：（比如 .ttf, .woff, .woff2…… 随着浏览器支持需求的改变，提供的字体将随着时间的推移而不断更新。）正如上面提到的，跨浏览器支持需要使用多种字体——这是 Fontsquirrel 的方法，确保你得到了你需要的一切。
+    - 每个字体的一个演示 HTML 文件在你的浏览器中加载，看看在不同的使用环境下字体会是什么样子。
+    - 一个 stylesheet.css 文件，它包含了你需要的生成好的 @font-face 代码。
+
+- 使用在线字体服务
+
+  1. 前往 [ Google Fonts](https://fonts.google.com/).
+  2. 使用左边的过滤器来显示你想要选择的字体类型，并选择一些你喜欢的字体。
+  3. 要选择字体种类，按下按钮旁边的 ⊕ 按钮。
+  4. 当你选择好字体种类时，按下页面底部的*[Number]* 种类选择。
+  5. 在生成的屏幕中，首先需要复制所显示的 HTML 代码行，并将其粘贴到 HTML 文件的头部。将其置于现有的`<link>`元素之上，使得字体是导入的，然后在你的 CSS 中使用它。
+  6. 然后，你需要将 CSS 声明复制到你的 CSS 中，以便将自定义字体应用到你的 HTML。
+
 ## 使用 JavaScript 动态编码
 ## 无障碍
 ## 为开发人员设计(英语)
