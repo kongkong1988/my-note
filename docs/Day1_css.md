@@ -1391,67 +1391,19 @@ z-index属性指定了一个元素的堆叠顺序（哪个元素应该放在前�
 
 |属性|说明|值|CSS|
 |:---:|:---:|:---:|:---:|
-|bottom|定义了定位元素下外边距边界与其包含块下边界之间的偏移。|auto
-length
-%
+|bottom|定义了定位元素下外边距边界与其包含块下边界之间的偏移。|auto<br>length<br>%<br>inherit|2|
+|clip|剪辑一个绝对定位的元素|shape<br>auto<br>inherit|2|
+|cursor|显示光标移动到指定的类型|url<br>auto<br>crosshair<br>default<br>pointer<br>move<br>e-resize<br>ne-resize<br>nw-resize<br>n-resize<br>se-resize<br>sw-resize<br>s-resize<br>w-resize<br>text<br>wait<br>help|2|
+|left|	定义了定位元素左外边距边界与其包含块左边界之间的偏移。|auto<br>length<br>%<br>
 inherit|2|
-|clip|剪辑一个绝对定位的元素|shape
-auto
+|overflow|设置当元素的内容溢出其区域时发生的事情。|auto<br>hidden<br>scroll<br>visible<br>
 inherit|2|
-|cursor|显示光标移动到指定的类型|url
-auto
-crosshair
-default
-pointer
-move
-e-resize
-ne-resize
-nw-resize
-n-resize
-se-resize
-sw-resize
-s-resize
-w-resize
-text
-wait
-help|2|
-|left|	定义了定位元素左外边距边界与其包含块左边界之间的偏移。|auto
-length
-%
-inherit|2|
-|overflow|设置当元素的内容溢出其区域时发生的事情。|auto
-hidden
-scroll
-visible
-inherit|2|
-|overflow-y|指定如何处理顶部/底部边缘的内容溢出元素的内容区域|auto
-hidden
-scroll
-visible
-no-display
-no-content|2|
-|overflow-x|指定如何处理右边/左边边缘的内容溢出元素的内容区域|auto
-hidden
-scroll
-visible
-no-display
-no-content|2|
-|position|指定元素的定位类型|absolute
-fixed
-relative
-static
-inherit|2|
-|right|	定义了定位元素右外边距边界与其包含块右边界之间的偏移。|auto
-length
-%
-inherit|2|
-|top|	定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移。|auto
-length
-%
-inherit|2|
-|z-index|设置元素的堆叠顺序|number
-auto
-inherit|2|
+|overflow-y|指定如何处理顶部/底部边缘的内容溢出元素的内容区域|auto<br>hidden<br>scroll<br>visible<br>no-display<br>no-content|2|
+|overflow-x|指定如何处理右边/左边边缘的内容溢出元素的内容区域|auto<br>hidden<br>scroll<br>visible<br>no-display<br>no-content|2|
+|position|指定元素的定位类型|absolute<br>fixed<br>relative<br>static<br>inherit|2|
+|right|	定义了定位元素右外边距边界与其包含块右边界之间的偏移。|auto<br>length<br>%<br>inherit|2|
+|top|	定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移。|auto<br>length<br>%<br>inherit|2|
+|z-index|设置元素的堆叠顺序|number<br>auto<br>inherit|2|
 
 ## 使用 JavaScript 动态编码
 ## 无障碍
