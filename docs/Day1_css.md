@@ -1403,6 +1403,101 @@ z-index属性指定了一个元素的堆叠顺序（哪个元素应该放在前�
 |top|	定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移。|auto<br>length<br>%<br>inherit|2|
 |z-index|设置元素的堆叠顺序|number<br>auto<br>inherit|2|
 
+### 弹性盒子(Flex Box)
+
+弹性盒子是 CSS3 的一种新的布局模式。
+
+CSS3 弹性盒（ Flexible Box 或 flexbox），是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。
+
+引入弹性盒布局模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。
+
+-弹性盒子内容
+
+弹性盒子由弹性容器(Flex container)和弹性子元素(Flex item)组成。
+
+弹性容器通过设置 display 属性的值为 flex 或 inline-flex将其定义为弹性容器。
+
+弹性容器内包含了一个或多个弹性子元素。
+
+***注意:*** 弹性容器外及弹性子元素内是正常渲染的。弹性盒子只定义了弹性子元素如何在弹性容器内布局。
+
+弹性子元素通常在弹性盒子内一行显示。默认情况每个容器只有一行。
+
+以下元素展示了弹性子元素在一行内显示，从左到右:
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+<style>.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 400px;
+    height: 250px;
+    background-color: lightgrey;
+}
+ 
+.flex-item {
+    background-color: cornflowerblue;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}</style>
+</head>
+<body>
+ 
+<div class="flex-container">
+  <div class="flex-item">flex item 1</div>
+  <div class="flex-item">flex item 2</div>
+  <div class="flex-item">flex item 3</div> 
+</div>
+ 
+</body>
+</html>
+```
+
+当然我们可以修改排列方式。
+
+如果我们设置 direction 属性为 rtl (right-to-left),弹性子元素的排列方式也会改变，页面布局也跟着改变:
+
+```
+body {
+    direction: rtl;
+}
+ 
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 400px;
+    height: 250px;
+    background-color: lightgrey;
+}
+ 
+.flex-item {
+    background-color: cornflowerblue;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+```
+
+- flex-direction
+
+flex-direction 属性指定了弹性子元素在父容器中的位置。
+
+ - 语法
+
+    flex-direction: row | row-reverse | column | column-reverse
+
+flex-direction的值有:
+
+ - row：横向从左到右排列（左对齐），默认的排列方式。
+ - row-reverse：反转横向排列（右对齐，从后往前排，最后一项排在最前面。
+ - column：纵向排列。
+ - column-reverse：反转纵向排列，从后往前排，最后一项排在最上面。
+
+
+
 ## 使用 JavaScript 动态编码
 ## 无障碍
 ## 为开发人员设计(英语)
