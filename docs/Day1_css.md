@@ -1496,6 +1496,15 @@ flex-direction的值有:
  - column：纵向排列。
  - column-reverse：反转纵向排列，从后往前排，最后一项排在最上面。
 
+- justify-content
+
+内容对齐（justify-content）属性应用在弹性容器上，把弹性项沿着弹性容器的主轴线（main axis）对齐。
+
+justify-content 语法如下：
+
+    justify-content: flex-start | flex-end | center | space-between | space-around
+
+
 
 
 ## 使用 JavaScript 动态编码
