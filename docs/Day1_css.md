@@ -1521,6 +1521,277 @@ justify-content 语法如下：
   - space-around：
 弹性项目平均分布在该行上，两边留有一半的间隔空间。如果剩余空间为负或者只有一个弹性项，则该值等同于center。否则，弹性项目沿该行分布，且彼此间隔相等（比如是20px），同时首尾两边和弹性容器之间留有一半的间隔（1/2*20px=10px）。
 
+- align-item 属性
+
+align-items 设置或检索弹性盒子元素在侧轴（纵轴）方向上的对齐方式。
+
+  - 语法
+
+各个值解析:
+
+  - flex-start：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。
+  - flex-end：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。
+  - center：弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。
+  - baseline：如弹性盒子元素的行内轴与侧轴为同一条，则该值与'flex-start'等效。其它情况下，该值将参与基线对齐。
+  - stretch：如果指定侧轴大小的属性值为'auto'，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照'min/max-width/height'属性的限制。
+
+- flex-wrap 属性
+
+flex-wrap 属性用于指定弹性盒子的子元素换行方式。
+
+  - 语法
+
+    flex-wrap: nowrap|wrap|wrap-reverse|initial|inherit;
+
+各个值解析:
+
+  - nowrap - 默认， 弹性容器为单行。该情况下弹性子项可能会溢出容器。
+  - wrap - 弹性容器为多行。该情况下弹性子项溢出的部分会被放置到新行，子项内部会发生断行
+  - wrap-reverse -反转 wrap 排列。
+
+- align-content 属性
+
+align-content 属性用于修改 flex-wrap 属性的行为。类似于 align-items, 但它不是设置弹性子元素的对齐，而是设置各个行的对齐。
+
+  - 语法
+
+    align-content: flex-start | flex-end | center | space-between | space-around | stretch
+
+各个值解析:
+
+  - stretch - 默认。各行将会伸展以占用剩余的空间。
+  - flex-start - 各行向弹性盒容器的起始位置堆叠。
+  - flex-end - 各行向弹性盒容器的结束位置堆叠。
+  - center -各行向弹性盒容器的中间位置堆叠。
+  - space-between -各行在弹性盒容器中平均分布。
+  - space-around - 各行在弹性盒容器中平均分布，两端保留子元素与子元素之间间距大小的一半。
+
+- 弹性子元素属性
+
+  - 排序语法
+
+    order: 
+
+各个值解析:
+
+  - `<integer>`：用整数值来定义排列顺序，数值小的排在前面。可以为负值。
+
+  - 对齐
+
+设置"margin"值为"auto"值，自动获取弹性容器中剩余的空间。所以设置垂直方向margin值为"auto"，可以使弹性子元素在弹性容器的两上轴方向都完全居中。
+ 
+  - 完美的居中
+
+以下实例将完美解决我们平时碰到的居中问题。
+
+- align-self
+
+align-self 属性用于设置弹性元素自身在侧轴（纵轴）方向上的对齐方式。
+
+  - 语法
+
+    align-self: auto | flex-start | flex-end | center | baseline | stretch
+
+各个值解析:
+
+  - auto：如果'align-self'的值为'auto'，则其计算值为元素的父元素的'align-items'值，如果其没有父元素，则计算值为'stretch'。
+  - flex-start：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。
+  - flex-end：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。
+  - center：弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。
+  - baseline：如弹性盒子元素的行内轴与侧轴为同一条，则该值与'flex-start'等效。其它情况下，该值将参与基线对齐。
+  - stretch：如果指定侧轴大小的属性值为'auto'，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照'min/max-width/height'属性的限制
+
+- flex
+
+flex 属性用于指定弹性子元素如何分配空间。
+
+- 语法
+
+flex: auto | initial | none | inherit |  [ flex-grow ] || [ flex-shrink ] || [ flex-basis ]
+
+各个值解析:
+
+  - auto: 计算值为 1 1 auto
+  - initial: 计算值为 0 1 auto
+  - none：计算值为 0 0 auto
+  - inherit：从父元素继承
+  - `[ flex-grow ]`：定义弹性盒子元素的扩展比率。
+  - `[ flex-shrink ]`：定义弹性盒子元素的收缩比率。
+  - `[ flex-basis ]`：定义弹性盒子元素的默认基准值。
+
+弹性盒子属性
+
+|属性|描述|
+|:---:|:---:|
+|display|指定 HTML 元素合资类型|
+|flex-direction|指定了弹性容器中子元素的排列方式|
+|justify-content|设置弹性盒子元素在主轴(横轴)方向上的对齐方式|
+|align-items|设置弹性盒子元素在侧轴(纵轴)方向上的对齐方式|
+|flex-wrap|设置弹性盒子的子元素超出父容器时是否换行|
+|align-content|修改flex-wrap属性的行为,类似align-items,但不是设置子元素对齐,而是设置行对齐|
+|flex-flow|flex-direction 和 flex-wrap 的简写|
+|oder|设置弹性盒子的子元素排列顺序|
+|align-self|在弹性子元素上使用.覆盖容器的 align-tiems 属性|
+|flex|设置弹性盒子的子元素如何分配空间|
+
+### 网格
+
+- 网格布局
+
+网格是一组相交的水平线和垂直线，它定义了网格的列和行。
+
+CSS 提供了一个基于网格的布局系统，带有行和列，可以让我们更轻松地设计网页，而无需使用浮动和定位。
+
+  - 网格元素
+
+网格布局由一个父元素及一个或多个子元素组成。
+ 
+  - display 属性
+
+当一个 HTML 元素将 display 属性设置为 grid 或 inline-grid 后，它就变成了一个网格容器，这个元素的所有直系子元素将成为网格元素。
+ 
+  - 网格轨道
+
+我们通过 grid-template-columns 和 grid-template-rows 属性来定义网格中的列和行。
+
+这些属性定义了网格的轨道，一个网格轨道就是网格中任意两条线之间的空间。
+ 
+  - fr 单位
+
+轨道可以使用任何长度单位进行定义。
+
+网格引入了 fr 单位来帮助我们创建灵活的网格轨道。一个 fr 单位代表网格容器中可用空间的一等份。
+ 
+  - 网格单元
+
+一个网格单元是在一个网格元素中最小的单位， 从概念上来讲其实它和表格的一个单元格很像。现在再看回我们前面的一个例子, 一旦一个网格元素被定义在一个父级元素当中，那么他的子级元素将会排列在每个事先定义好的网格单元中。
+ 
+  - 网格区域
+
+网格元素可以向行或着列的方向扩展一个或多个单元，并且会创建一个网格区域。网格区域的形状应该是一个矩形 - 也就是说你不可能创建出一个类似于"L"形的网格区域。
+ 
+  - 网格列
+
+ 网格元素的垂直线方向称为列（Column）。
+ 
+  - 网格行
+
+网格元素的水平线方向称为行（Row）。
+ 
+  - 网格间距
+
+网格间距（Column Gap）指的是两个网格单元之间的网格横向间距或网格纵向间距。
+
+您可以使用以下属性来调整间隙大小：
+
+1. grid-column-gap
+2. grid-row-gap
+3. grid-gap
+ 
+  - 网格线
+
+列与列，行与行之间的交接处就是网格线。
+
+Grid 会为我们创建编号的网格线来让我们来定位每一个网格元素。
+ 
+  - 网格属性
+ 
+|属性|描述|
+|:---:|:---:|
+|column-gap|指定列之间的间隙|
+|gap|	row-gap 和 column-gap 的简写属性|
+|grid|grid-template-rows, grid-template-columns, grid-template-areas, grid-auto-rows, grid-auto-columns, 以及 grid-auto-flow 的简写属性|
+|grid-area|指定网格元素的名称，或者也可以是 grid-row-start, grid-column-start, grid-row-end, 和 grid-column-end 的简写属性|
+|grid-auto-columns|指的默认的列尺寸|
+|grid-auto-flow|指定自动布局算法怎样运作，精确指定在网格中被自动布局的元素怎样排列。|
+|grid-auto-rows|指的默认的行尺寸|
+|grid-column|grid-column-start 和 grid-column-end 的简写属性|
+|grid-column-end|指定网格元素列的结束位置|
+|grid-column-gap|指定网格元素的间距大小|
+|grid-column-start|	指定网格元素列的开始位置|
+|grid-gap|grid-row-gap 和 grid-column-gap 的简写属性|
+|grid-row|grid-row-start 和 grid-row-end 的简写属性|
+|grid-row-end|指定网格元素行的结束位置|
+|grid-row-gap|指定网格元素的行间距|
+|grid-row-start|指定网格元素行的开始位置|
+|grid-template|grid-template-rows, grid-template-columns 和 grid-areas 的简写属性|
+|grid-template-areas|指定如何显示行和列，使用命名的网格元素|
+|grid-template-columns|指定列的大小，以及网格布局中设置列的数量|
+|grid-template-rows|	指定网格布局中行的大小|
+|row-gap|指定两个行之间的间距|
+
+- 网格容器
+
+要使 HTML 元素变成一个网格容器，可以将 display 属性设置为 grid 或 inline-grid。
+
+网格容器内放置着由列和行内组成的网格元素。
+
+  - grid-template-columns 属性
+
+grid-template-columns 属性定义了网格布局中的列的数量，它也可以设置每个列的宽度。
+
+属性值是一个以空格分隔的列表，其中每个值定义相对应列的宽度。
+
+如果您希望网格布局包含 4 列，则需要设置 4 列的宽度，如果所有列的宽度都是一样的，可以设置为 auto。
+
+***注意:*** 如果您在 4 列网格中有 4 个以上的网格元素，网格布局会生成新的一行放置该元素。
+
+grid-template-columns 属性也可用于指定列的宽度
+
+  - grid-template-rows 属性
+
+grid-template-rows 属性设置每一行的高度。
+
+属性值是一个以空格分隔的列表，其中每个值定义相对应行的高度：
+
+  - justify-content 属性
+
+justify-content 属性用于对齐容器内的网格，设置如何分配顺着弹性容器主轴(或者网格行轴) 的元素之间及其周围的空间。
+
+***注意:*** 网格的总宽度必须小于容器的宽度才能使 justify-content 属性生效。
+
+justify-content 详细内容参考：[CSS justify-content](https://www.runoob.com/cssref/css3-pr-justify-content.html) 属性
+
+  - align-content 属性
+
+align-content 属性用于设置垂直方向上的网格元素在容器中的对齐方式。
+
+***注意：*** 网格元素的总高度必须小于容器的高度才能使 align-content 属性生效。
+
+- 网格元素
+
+网格容器包含了一个或多个网格元素。
+
+默认情况下，网格容器的每一列和每一行都有一个网格元素，我们也可以设置网格元素跨越多个列或行，行和列为行号。
+
+  - grid-column 属性
+
+grid-column 属性定义了网格元素列的开始和结束位置。
+
+***注意：*** grid-column 是 grid-column-start 和 grid-column-end 属性的简写属性。
+
+  - grid-row 属性
+
+grid-row 属性定义了网格元素行的开始和结束位置。
+
+***注意：*** grid-row 是 grid-row-start 和 grid-row-end 属性的简写属性。
+
+  - grid-area 属性
+
+grid-area 属性是 grid-row-start, grid-column-start, grid-row-end 以及 grid-column-end 属性的简写。
+
+  - 网格元素命名
+
+grid-area 属性可以对网格元素进行命名。
+
+命名的网格元素可以通过容器的 grid-template-areas 属性来引用。
+
+  - 网格元素的顺序
+
+网格布局允许我们将网格元素放置在我们喜欢的任何地方。
+
+HTML 代码中的第一元素不一定非要显示为网格中元素的第一项。
+    
 
 ## 使用 JavaScript 动态编码
 ## 无障碍
