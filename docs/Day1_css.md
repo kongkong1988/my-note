@@ -1792,6 +1792,134 @@ grid-area 属性可以对网格元素进行命名。
 
 HTML 代码中的第一元素不一定非要显示为网格中元素的第一项。
     
+### 响应式设计(Viewport)
+
+- 什么是 Viewport
+
+viewport 是用户网页的可视区域。
+
+viewport 翻译为中文可以叫做"视区"。
+
+手机浏览器是把页面放在一个虚拟的"窗口"（viewport）中，通常这个虚拟的"窗口"（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部分。
+
+- 设置 Viewport
+
+一个常用的针对移动网页优化过的页面的 viewport meta 标签大致如下：
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  - width：控制 viewport 的大小，可以指定的一个值，如 600，或者特殊的值，如 device-width 为设备的宽度（单位为缩放为 100% 时的 CSS 的像素）。
+
+  - height：和 width 相对应，指定高度。
+
+  - initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例。
+
+  - maximum-scale：允许用户缩放到的最大比例。
+
+  - minimum-scale：允许用户缩放到的最小比例。
+
+  - user-scalable：用户是否可以手动缩放。
+
+一个常用的针对移动网页优化过的页面的 viewport meta 标签大致如下：
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+### 响应式 Web 设计 - 网格视图
+
+- 什么是网格视图
+
+很多网页都是基于网格设计的，这说明网页是按列来布局的。
+
+响应式网格视图通常是 12 列，宽度为100%，在浏览器窗口大小调整时会自动伸缩。
+
+- 创建响应式网格视图
+
+接下来我们来创建一个响应式网格视图。
+
+首先确保所有的 HTML 元素都有 box-sizing 属性且设置为 border-box。
+
+确保边距和边框包含在元素的宽度和高度间。
+
+添加如下代码：
+
+    * {
+    box-sizing: border-box;
+}
+
+以下实例演示了简单的响应式网页，包含两列：
+
+```
+.menu {    width: 25%;    
+	float: left;}
+	.main {    width: 75%;    
+	float: left;}
+```
+
+### 响应式 Web 设计 - 媒体查询
+
+媒体(media)查询在 CSS3 上有介绍：CSS3 @media 查询。
+
+使用 @media 查询，你可以针对不同的媒体类型定义不同的样式
+
+实例:
+
+```
+@media only screen and (max-width: 500px) {
+    body {
+        background-color: lightblue;
+    }
+}
+```
+
+- 添加断点
+
+在先前的教程中我们使用行和列来制作网页，它是响应式的，但在小屏幕上并不能友好的展示。
+
+媒体查询可以帮我们解决这个问题。我们可以在设计稿的中间添加断点，不同的断点有不同的效果。
+
+- 为移动端优先设计
+
+移动端优先意味着在设计桌面和其他设备时优先考虑移动端的设计。
+
+这就意味着我们必须对 CSS 做一些改变。
+
+- 其他断点
+
+你可以根据自己的需要添加断点。
+
+我们同样可以为平板设备和移动手机设备设置断点。
+
+方向：横屏/竖屏
+
+结合CSS媒体查询,可以创建适应不同设备的方向(横屏landscape、竖屏portrait等)的布局。
+
+### 响应式 Web 设计 - 图片
+
+- 使用 width 属性
+
+- 使用 max-width 属性
+
+- 网页中添加图片
+
+- 背景图片
+
+- -不同设备显示不同图片
+
+- HTML5 <picture> 元素
+
+### 响应式 Web 设计 - 视频(Video)
+
+- 使用 width 属性
+
+- 使用 max-width 属性
+
+- 在网页中添加视频
+
+### 响应式 Web 设计 - 框架
+
+本章节为大家介绍响应式 Web 设计框架 Bootstrap。
+
+Bootstrap，来自 Twitter，是目前最受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷
 
 ## 使用 JavaScript 动态编码
 ## 无障碍
