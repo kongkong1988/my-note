@@ -43,4 +43,4 @@ JavaScript 常用于验证用户的输入.
 
 - Javascript 脚本代码可被放置在 HTML 页面的 <body> 和 <head> 部分中。
 
-- ### '<script>'标签
+- ### '<script>' 标签
