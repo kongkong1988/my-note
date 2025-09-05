@@ -161,3 +161,137 @@ function myFunction()
 ```
 
 外部脚本不能包含 '<script>' 标签.
+
+## JavaScript Vscode & AI 编程助手
+
+VSCode 完整安装教程参考：https://www.runoob.com/vscode/vscode-tutorial.html
+
+AI 编程助手 —— Fitten Code
+
+## Chrome 浏览器中执行 JavaScript 
+
+参考 https://www.runoob.com/js/js-chrome.html
+
+## JavaScript 输出
+
+### JavaScript 没有任何打印或者输出的函数
+
+### JavaScript 显示数据
+
+JavaScript 可以通过不同的方式来输出数据：
+
+- 使用 window.alert() 弹出警告框.
+
+- 使用 document.write() 方法将内容写到 HTML 文档中。
+
+- 使用 innerHTML 写入到 HTML 元素。
+
+- 使用 console.log() 写入到浏览器的控制台。
+
+### 使用 window.alert()
+
+可以弹出警告框来显示数据:
+
+```
+<!DOCTYPE html>
+<html>
+<body>
+<h1>我的第一个页面</h1><p>我的第一个段落。</p>
+	
+<script>window.alert(5 + 6);
+</script>
+
+</body>
+</html>
+```
+
+### 操作 HTML 元素
+
+如需从 JavaScript 访问某个 HTML 元素,可以是使用 document.getElementByld(Id) 方法.
+
+请使用 'Id' 属性来表示 HTML 元素,bing innerHTML 来获取或插入元素内容:
+
+```
+<!DOCTYPE html><html>
+<body>
+
+<h1>我的第一个 Web 页面</h1>
+
+	<p id="demo">我的第一个段落</p>
+
+<script>
+	document.getElementById("demo").innerHTML = "段落已修改。";
+</script>
+
+</body>
+</html>
+```
+
+以上 JavaScript 语句 (在<script>标签中) 可以在 web 浏览器中执行:
+
+**document.getElementByld("demo")** 是使用 Id 属性来查找 HTML 元素的 JavaScript 代码.
+
+**innerHTML="段落已修改."** 是用于修改元素的 HTML 内容(innerHTML)的 JavaScript 代码.
+
+***在本教程中*** 
+- 在大多数情况下,在本教程中,我们将使用上面描述的方法来输出
+
+- 上面的例子直接把 Id="demo" 的 <p> 元素写到 HTML 文档输出中
+
+### 写到 HTML 问到
+
+处于测试目的,可以将 JavaScript 直接写在 HTML 文档中:
+
+```
+<!DOCTYPE html><html>
+<body><h1>我的第一个 Web 页面</h1>
+	<p>我的第一个段落。</p>
+	<script>document.write(Date());
+</script>
+
+</body>
+</html>
+```
+
+- 使用 document.write() 可以向文档写入内容.
+
+- 如果在文档已完成加载后执行 document.write,整个 HTML 页面将被覆盖.
+
+```
+<!DOCTYPE html>
+<html>
+<body>
+<h1>我的第一个 Web 页面</h1>
+<p>我的第一个段落。</p>
+<button onclick="myFunction()">点我</button>
+<script>
+function myFunction() {
+   	document.write(Date());
+}
+</script>
+</body>
+</html>
+```
+
+### 写到控制台
+
+- 如果浏览器支持调试,可以使用 console.log() 方法在浏览器中显示 JavaScript 值.
+- 浏览器中使用 F12 来启用调试模式,在调试窗口中点击 "Console" 菜单.
+
+```
+<!DOCTYPE html>
+<html>
+<body>
+<h1>我的第一个 Web 页面</h1>
+<script>
+a = 5;
+b = 6;
+c = a + b;
+console.log(c);
+</script>
+
+</body>
+</html>
+```
+
+***程序中调试是测试,查找及减少 bug(错误)的过程.***
