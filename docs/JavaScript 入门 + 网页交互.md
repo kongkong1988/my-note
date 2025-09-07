@@ -378,6 +378,7 @@ JavaScript 同样保留了一些关键字,这些关键字在当前的语言版�
 
 以下是 JavaScript 中最重要的保留关键字 (按字母顺序):
 
+```
 abstract	else	instanceof	super
 boolean	enum	int	switch
 break	export	interface	synchronized
@@ -393,6 +394,7 @@ default	if	public	void
 delete	implements	return	volatile
 do	import	short	while
 double	in	static	with
+```
 
 ### JavaScript 注释
 
