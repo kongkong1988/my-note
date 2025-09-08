@@ -1020,3 +1020,9 @@ var person= new Object;
 ***JavaScript 变量均为对象.当我们声明一个变量时,就创建了一个新的对象.***
 
 ## JavaScript 对象
+
+JavaScript 对象是拥有属性和方法的数据.
+
+在 JavaScript 中,几乎所有的事物都是对象.
+
+***在 JavaScript 中,对象是非常重要的,当我们理解了对象,就可以了解 JavaScript.***
