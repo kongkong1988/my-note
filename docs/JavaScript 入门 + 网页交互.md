@@ -1153,4 +1153,16 @@ objectName.methodName
 
 ### 更多实例
 
-[创建 JavaScript 对象 Ⅰ]
+[创建 JavaScript 对象Ⅰ](https://www.runoob.com/try/tryit.php?filename=tryjs_object_create_1)
+
+[创建 JavaScript 对象 Ⅱ](https://www.runoob.com/try/tryit.php?filename=tryjs_object_create_2)
+
+[访问对象属性Ⅰ](https://www.runoob.com/try/tryit.php?filename=tryjs_object_properties_1)
+
+[访问对象 Ⅱ](https://www.runoob.com/try/tryit.php?filename=tryjs_object_properties_2)
+
+[函数属性作为一个方法访问](https://www.runoob.com/try/tryit.php?filename=tryjs_object_method)
+
+[函数属性作为一个属性访问](https://www.runoob.com/try/tryit.php?filename=tryjs_object_function)
+
+### JavaScript 函数
