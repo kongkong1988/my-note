@@ -1384,7 +1384,7 @@ console.log(delete var2); // true
 console.log(var2); // 已经删除 报错变量未定义
 ```
 
-### JavaScript 作用域
+## JavaScript 作用域
 
 
 
