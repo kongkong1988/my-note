@@ -1386,22 +1386,206 @@ console.log(var2); // 已经删除 报错变量未定义
 
 ## JavaScript 作用域
 
+作用域是可访问变量的集合.
 
+### JavaScript 作用域
 
+在 JavaScript 中,对象和函数同样也是变量.
 
+**在 JavaScript 中,作用域为可访问变量,对象,函数的集合.**
 
+JavaScript 函数作用域:作用域在函数内修改.
 
+### JavaScript 局部作用域
 
+变量在函数内声明,变量为局部变量,具有局部作用域.
 
+局部变量:只能在函数内部访问.
 
+```
+// 此处不能调用 carName 变量
+function myFunction() {
+    var carName = "Volvo";
+    // 函数内可调用 carName 变量
+}
+```
 
+因为局部变量只作用于函数内,所以不同的函数可以使用相同名称的变量.
 
+局部变量在函数开始执行时创建,函数执行完后局部变量会自动销毁.
 
+### JavaScript 全局变量
 
+变量在函数外定义,即为全局变量.
 
+全局变量有 **全局作用域**:网页中所有脚本和函数均可使用.
 
+```
+var carName = " Volvo";
+ 
+// 此处可调用 carName 变量
+function myFunction() {
+    // 函数内可调用 carName 变量
+}
+```
 
+如果变量在函数内没有声明 (没有使用 var 关键字),该变量为全局变量.
 
+以下实例中 carName 在函数内,但是为全局变量.
+
+```
+// 此处可调用 carName 变量
+ 
+function myFunction() {
+    carName = "Volvo";
+    // 此处可调用 carName 变量
+}
+```
+
+### JavaScript 变量生命周期
+
+JavaScript 变量生命周期在它声明时初始化.
+
+局部变量在函数执行完毕后销毁.
+
+全局变量在页面关闭后销毁.
+
+### 函数参数
+
+函数参数只在函数内起作用,是局部变量.
+
+### HTML 中的全局变量
+
+在 HTML 中,全局变量是 window 对象,所以 window 对象可以调用函数内的未声明 (未加 var) 的局部变量.
+
+**注意:** 所有全局变量都属于 window 对象.
+
+```
+//此处可使用 window.carName
+ 
+function myFunction() {
+    carName = "Volvo";
+}
+```
+
+### 你知道吗?
+
+***你的全局变量,或者函数,可以覆盖 window 对象的变量或者函数.***
+
+***局部变量,包括 window 对象可以覆盖全局变量和函数.***
+
+在 JavaScript 中,函数内部的局部变量通常不可以直接被外部访问,但有几种方式可以将函数内部的局部变量暴露给外部作用域,具体如下:
+
+- **通过全局对象:** 在函数内部,可以通过将局部变量赋值给 window 对象的属性来使其成为全局可访问的.例如,使用 **window.a = a;** 语句,可以在函数外部通过 **window.a** 访问到这个局部变量的值
+
+- **定义全局变量:** 在函数内部不使用 **var、let** 或 **const** 等关键字声明变量时，该变量会被视为全局变量，从而可以在函数外部访问。但这种做法通常不推荐，因为它可能导致意外的副作用和代码难以维护。
+
+- **返回值:** 可以通过在函数内部使用 **return** 语句返回局部变量的值,然后在函数外部接收这个返回值.这样,虽然局部变量本身不会被暴露,但其值可以通过函数调用传递到外部.
+
+- **闭包:** JavaScript 中的闭包特性允许内部函数访问外部函数的局部变量.即使外部函数执行完毕后,其局部变量仍然可以被内部函数引用.
+
+- **属性和方法:** 定义在全局作用域中的变量和函数都会变成 window 对象的属性和方法,因此可以在调用时省略 window,直接使用变量名或函数名.
+
+## JavaScript 事件
+
+HTML 事件是发生在 HTML 元素上的事情.
+
+挡在 HTML 页面中使用 JavaScript 时,JavaScript 可以触发这些事件.
+
+### HTML 事件
+
+HTML 事件可以是浏览器行为,也可以是用户行为.
+
+以下是 HTML 事件的实例:
+
+- HTML 页面完成加载
+
+- HTML input 字段改变时
+
+- HTML 按钮被点击
+
+通常,当事件发生时,可以做这些事情.
+
+在事件触发时 JavaScript 可以执行一些代码.
+
+HTML 元素中可以添加事件属性,使用 JavaScript 代码来添加 HTML 元素.
+
+单引号:
+
+```
+<some-HTML-element some-event='JavaScript 代码'>
+```
+
+双引号:
+
+```
+<some-HTML-element some-event="JavaScript 代码">
+```
+
+在以下实例中,按钮元素中添加了 onclick 属性 (并加上代码):
+
+```
+<button onclick="getElementById('demo').innerHTML=Date()">现在的时间是?</button>
+```
+
+以上实例中,JavaScript 代码将修改 id="demo" 元素的内容.
+
+在下一个实例中,代码将修改自身元素的内容 (使用 **this**.innerHTML):
+
+```
+<button onclick="this.innerHTML=Date()">现在的时间是?</button>
+```
+
+*** JavaScript 代码通常是几行代码.比较常见的是通过事件属性来调用:***
+
+```
+<button onclick="displayDate()">现在的时间是?</button>
+```
+
+### 常见的 HTML 事件
+
+下面是一些常见的 HTML 事件的列表:
+
+|事件|描述|
+|:---:|:---:|
+|onchange|HTML 元素改变|
+|onclick|用户点击 HTML 元素|
+|onmouseover|鼠标指针移动到指定的元素上时发生|
+|onmouseout|用户从一个 html 元素上移开鼠标时发生|
+|onkeydown|用户按下键盘按键|
+|onload|浏览器已完成页面的加载|
+
+更多事件列表: [JavaScript 参考手册 - HTML DOM 事件](https://www.runoob.com/jsref/dom-obj-event.html).
+
+### JavaScript 可以做什么?
+
+事件可以用于处理表单验证,用户输入,用户行为及浏览器动作:
+
+- 页面加载时触发事件
+
+- 页面关闭时触发事件
+
+- 用户点击按钮执行动作
+
+- 验证用户输入内容的合法性
+
+- 等等...
+
+可以使用多种方法来执行 JavaScript 事件代码:
+
+- HTML 事件属性可以直接执行 JavaScript 代码
+
+- HTML 事件属性可以调用 JavaScript 函数
+
+- 可以为 HTML 元素指定自己的事件处理程序
+
+- 可以阻止事件的发生.
+
+- 等等...
+
+***在 HTML DOM 章节中将会学到更多关于事件及事件处理程序的知识.***
+
+### JavaScript 字符串
 
 
 
