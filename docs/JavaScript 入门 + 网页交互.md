@@ -1797,13 +1797,13 @@ const multiLineText = `
 `;
 ```
 
-若要转义模板字面量中的反引号 (`),需在反引号之前加一个反斜杠 (`\`).
+若要转义模板字面量中的反引号 (\`),需在反引号之前加一个反斜杠 (\\).
 
 ```
 `\`` === "`"; // true
 ```
 
-模板字面量用反引号 (`) 扩起来,二部是双引号 (") 或单引号 (') .
+模板字面量用反引号 (\`) 扩起来,二部是双引号 (") 或单引号 (') .
 
 除了普通字符串外,模板字面量还可以包含占位符 ———— 一种由美元符号和大括号分隔的嵌入式表达式： **${expression}**.
 
@@ -1817,11 +1817,34 @@ const age = 30;
 const message = `My name is ${name} and I'm ${age} years old.`;
 ```
 
+以上实例中,**${name}** 和 **${age}** 是模板字符串的表达式部分,它们被包含在 **${}** 内部,并在运行时求值.
 
+模板字符串允许我们在字符串中引用变量、执行函数调用和进行任意的 JavaScript 表达式.
 
+模板字符串中允许我们使用表达式:
 
+```
+let price = 10;
+let VAT = 0.25;
 
+let total = `Total: ${(price * (1 + VAT)).toFixed(2)}`;
+```
 
+模板字符串当作 HTML 模板使用:
+
+```
+let header = "";
+let tags = ["RUNOOB", "GOOGLE", "TAOBAO"];
+
+let html = `<h2>${header}</h2><ul>`;
+for (const x of tags) {
+  html += `<li>${x}</li>`;
+}
+
+html += `</ul>`;
+```
+
+## JavaScript 运算符
 
 
 
