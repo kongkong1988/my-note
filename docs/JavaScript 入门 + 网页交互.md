@@ -1959,17 +1959,37 @@ x=5,下面的表格解释了比较运算符:
 
 |运算符|描述|比较|返回值|实例|
 |:---:|:---:|:---:|:---:|:---:|
-|==|等于||||
-| 主标题 1 | 主标题 2 |
-|---|---|
-| <table border="1"><tr><td>子标题 A1</td><td>子标题 A2</td></tr></table> | 内容 2 |
-| 内容 3 | <table border="1"><tr><td>子标题 B1</td><td>子标题 B2</td></tr></table> |
+|==|等于|x==8|false|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison1)|
+|||x==5|true|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison2)|
+|===|绝对等于 (值和类型均相等)|x==="5"|false|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison3)|
+|||x===5|true|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison4)|
+|!=|不等于|x!=8|true|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison5)|
+|!===|严格不等于运算符 (值和类型有一个不相等,或者两个都不相等)|x!=="5"|true|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison6)|
+|||x!==5|false|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison7)|
+|>|大于|x>8|false|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison8)|
+|<|小于|x<8|true|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison9)|
+|>=|大于或等于|x>=8|false|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison10)|
+|<=|小于或等于|x<=8|true|[实例](https://www.runoob.com/try/try.php?filename=tryjs_comparison11)|
 
+### 如何使用
 
+可以在条件语句中使用比较运算符对值进行比较,然后根据结果来采取行动:
 
+```
+if (age<18) x="Too young";
+```
 
+### 逻辑运算符
 
+逻辑运算符用于测定变量或值之间的逻辑.
 
+给定 x=6 以及 y=3,下表解释了逻辑运算符:
+
+|运算符|描述|例子|
+|:---:|:---:|:---:|
+|&&|and|(x<10 && y>1) 为 true|
+|\|||or|(x==5 || y==5) 为 false|
+|!|not|!(x==y) 为 true|
 
 
 
