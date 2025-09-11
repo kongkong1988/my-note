@@ -1878,9 +1878,9 @@ x=y+z;
 |/|除法|x=y/2|2.5|5|[实例](https://www.runoob.com/try/try.php?filename=tryjs_oper_div)|
 |%|取模 (余数)|x=y%2|1|5|[实例](https://www.runoob.com/try/try.php?filename=tryjs_oper_mod)|
 |++|自增|x=++y|6|6|[实例](https://www.runoob.com/try/try.php?filename=tryjs_oper_incr)|
-|++|自增|x=y++|5|6|[实例](https://www.runoob.com/try/try.php?filename=tryjs_oper_incr2)|
+||自增|x=y++|5|6|[实例](https://www.runoob.com/try/try.php?filename=tryjs_oper_incr2)|
 |--|自减|x=--y|4|4|[实例](https://www.runoob.com/try/try.php?filename=tryjs_oper_decr)|
-|--|自减|x=--y|5|4|[实例](https://www.runoob.com/try/try.php?filename=tryjs_oper_decr2)|
+||自减|x=--y|5|4|[实例](https://www.runoob.com/try/try.php?filename=tryjs_oper_decr2)|
 
 ### JavaScript 赋值运算符
 
