@@ -1587,16 +1587,72 @@ HTML 元素中可以添加事件属性,使用 JavaScript 代码来添加 HTML �
 
 ## JavaScript 字符串
 
+JavaScript 字符串用于存储和处理文本.
 
+### JavaScript 字符串
 
+字符串可以存储一系列字符,如 "John Doe".
 
+字符串可以是插入到引号中的任何字符.可以使用单引号或双引号:
 
+```
+var
+carname = "Volvo XC60";
+var
+carname = 'Volvo XC60';
+```
 
+可以使用索引位置来访问字符串中的每个字符:
 
+```
+var character = carname[7];
+```
 
+字符串的索引从 0 开始,这意味着第一个字符索引值为 `[0]`,第二个为`[1]`,以此类推.
 
+```
+const name = "RUNOOB";
+let letter = name[2];
 
+document.getElementById("demo").innerHTML = letter;
+```
 
+可以在字符串中使用引号,字符串中的引号不要与字符串的引号相同:
+
+```
+var answer = "It's alright";
+var answer = "He is called 'Johnny'";
+var answer = 'He is called "Johnny"';
+```
+
+也可以在字符串添加转义符来使用引号:
+
+```
+var x = 'It\'s alright';
+var y = "He is called \"Johnny\"";
+```
+
+### 字符串长度
+
+可以使用内置属性 length 来计算字符串的长度:
+
+```
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";var sln = txt.length;
+```
+
+### 特殊字符
+
+在 JavaScript 中,字符串写在单引号或双引号中.
+
+因为这样,以下实例 JavaScript 无法解析:
+
+```
+"We are the so-called "Vikings" from the north."
+```
+
+字符串 "We are the so-called" 被截断.
+
+如何解决以上问题呢?
 
 
 
