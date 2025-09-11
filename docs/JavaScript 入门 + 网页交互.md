@@ -1652,20 +1652,170 @@ var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";var sln = txt.length;
 
 字符串 "We are the so-called" 被截断.
 
-如何解决以上问题呢?
+如何解决以上问题呢?可以使用反斜杠 (\) 来转义 "Vikings" 字符串中的双引号,若下:
 
+```
+"We are the so-called \"Vikings\" from the north."
+```
 
+反斜杠是一个**转义字符**.转义字符将特殊字符转换为字符串字符:
 
+转义字符 (\) 可以用于转义撇号,换行,引号,等其他特殊字符:
 
+|代码|输出|
+|:---:|:---:|
+|\'|单引号|
+|\"|双引号|
+|\\|反斜杠|
+|\n|换行|
+|\r|回车|
+|\t|tab (制表符)|
+|\b|退格符|
+|\f|换页符|
 
+### 字符串可以是对象
 
+通常, JavaScript 字符串是原始值,可以使用字符创建: **var firstName = "John"**
 
+但我们也可以使用 new 关键字将字符串定义为一个对象: **var firstName = new String("John")
 
+```
+var x = "John";
+var y = new String("John");
+typeof x //  返回 String
+typeof y // 返回 Object
+```
 
+***不要创建 String 对象.它会拖慢执行速度,并可能产生其他副作用:***
 
+```
+var x = "John";              
+var y = new String("John");
+(x === y) // 结果为 false，因为 x 是字符串，y 是对象var x = "John";              
+var y = new String("John");
+(x === y) // 结果为 false，因为 x 是字符串，y 是对象
+```
 
+=== 为绝对相等,即数据类型与值都必须相等.
 
+### 字符串属性和方法
 
+原始值字符串,如 "John",没有属性和方法(因为他们不是对象).
+
+原始值可以使用 JavaScript 的属性和方法,因为 JavaScript 在执行方法和属性时可以吧原始值当作对象.
+
+**字符串方法我们将在下一章节中介绍**
+
+### 字符串属性
+
+|属性|描述|
+|:---:|:---:|
+|constructor|返回创建字符串属性的函数|
+|length|返回字符串的长度|
+|prototype|允许向对象添加属性和方法|
+
+### 字符串方法
+
+更多方法实例可以参见: [JavaScript String 对象](https://www.runoob.com/jsref/jsref-obj-string.html).
+
+|方法|描述|
+|:---:|:---:|
+|charAt()|返回指定索引位置的字符|
+|charCodeAt()|返回指定索引位置字符 Unicode 值|
+|concat()|连接两个或多个字符串,返回连接后的字符串|
+|fromCharCode()|将 Unicode 转换为字符串|
+|indexOf()|返回字符串中检索指定字符第一次出现的位置|
+|lastIndexOf()|返回字符串中检索指定字符最后一次出现的位置|
+|localeCompare()|用本地特定的顺序来比较连个字符串|
+|match()|找到一个或多个正则表达式的匹配|
+|replace()|替换与正则表达式匹配的子串|
+|search()|检索与正则表达式相匹配的值|
+|slice()|提取字符串的片段,并在新的字符串中返回被提取的部分|
+|split()|吧字符串分割为子字符串的数组|
+|substr()|从起始索引号提取字符串中指定数目的字符|
+|substring()|提取字符串中两个指定的索引号之间的字符|
+|toLocaleLowerCase()|根据主机的语言环境把字符串转换为小写,只有几种语言 (如土耳其语) 具有地方特有的大小写映射|
+|toLocaleUpperCase()|根据主机的语言环境把字符串转换为大写,只有几种语言 (如土耳其语) 具有地方特有的大小写映射|
+|toLowerCase()|把字符串转换为小写|
+|toString()|返回字符串对象值|
+|toUpperCase()|把字符串转换为大写|
+|trim()|移除字符串首位空白|
+|valueOf()|返回某个字符串对象的原始值|
+
+## JavaScript 字符串模板
+
+### JavaScript 模板字符串
+
+JavaScript 中的模板字符串是一种方便的字符串语法,允许在字符串中嵌入表达式和变量.
+
+模板字符串使用单引号 `` 作为字符串的定界符分隔的字面量.
+
+模板字面量是用单引号 (`) 分隔的字面量,允许多行字符串、带嵌入表达式的字符串插值和一种叫带标签的模板的特殊结构
+
+**语法**
+
+```
+`string text`
+
+`string text line 1
+ string text line 2`
+
+`string text ${expression} string text`
+
+tagFunction`string text ${expression} string text`
+```
+
+**参数**
+
+- **string text:** 将成为模板字面量的一部分的字符串文本.几乎允许所有字符,包括换行符和其他空白字符.但是,除非使用了标签函数,否则无效的转义序列将导致语法错误.
+
+- **expression:** 要插入当前位置的表达式,其值被转换为字符串或传递给 tagFunction.
+
+- **tagFunction:** 如果指定,将使用模板字符串数组和替换表达式调用它,返回值将成为模板字面量的值.
+
+```
+let text = `Hello RUNOOB!`;
+```
+
+**浏览器支持**
+
+Chrome,Edge,Firefox,Safari,Opera
+
+模板字符串中可以同时使用单引号和双引号:
+
+```
+let text = `He's often called "Runoob"`;
+```
+
+模板字符串还支持多行文本,而无需使用特殊的转义字符;
+
+```
+const multiLineText = `
+  This is
+  a multi-line
+  text.
+`;
+```
+
+若要转义模板字面量中的反引号 (`),需在反引号之前加一个反斜杠 (\).
+
+```
+`\`` === "`"; // true
+```
+
+模板字面量用反引号 (`) 扩起来,二部是双引号 (") 或单引号 (') .
+
+除了普通字符串外,模板字面量还可以包含占位符 ———— 一种由美元符号和大括号分隔的嵌入式表达式： **${expression}**.
+
+字符串和占位符被传递给一个函数 (要么是默认函数,要么是自定义函数).默认函数 (当未提供自定义函数时) 只执行字符串插值来替换占位符,然后将这些部分拼接到一个字符串中.
+
+模板字符串中允许我们使用变量:
+
+```
+const name = 'Runoob';
+const age = 30;
+const message = `My name is ${name} and I'm ${age} years old.`;
+```
 
 
 
