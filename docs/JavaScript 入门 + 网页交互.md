@@ -1585,7 +1585,7 @@ HTML 元素中可以添加事件属性,使用 JavaScript 代码来添加 HTML �
 
 ***在 HTML DOM 章节中将会学到更多关于事件及事件处理程序的知识.***
 
-### JavaScript 字符串
+## JavaScript 字符串
 
 
 
