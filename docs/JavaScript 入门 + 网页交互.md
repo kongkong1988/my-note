@@ -1991,6 +1991,23 @@ if (age<18) x="Too young";
 |\|\||or|(x==5 || y==5) 为 false|
 |!|not|!(x==y) 为 true|
 
+### 条件运算符
+
+JavaScript 还包含了基于某些条件对变量进行赋值的条件运算符.
+
+**语法**
+
+    variablename=(condition)?value1:value2 
+
+**例子**
+
+如果变量 age 中的值小于 18,则向变量 voteable 赋值 "年龄太小",否则赋值 "年龄已达到".
+
+```
+voteable=(age<18)?"年龄太小":"年龄已达到";
+```
+
+## JavaScript 条件语句
 
 
 
