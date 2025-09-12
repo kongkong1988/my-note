@@ -3126,7 +3126,9 @@ e
 
 该参考手册包含了所有 RegExp 对象的方法和属性.
 
-## JavaScript 错误
+## JavaScript 错误 - throw 、 try 和 catch
+
+
 
 
 
