@@ -2534,10 +2534,9 @@ list:
 }
 ```
 
-## JavaScript typeof
+## JavaScript typeof,null 和 Undefined
 
-
-
+### typeof 操作符
 
 
 
