@@ -2475,17 +2475,66 @@ for (i=0;i<10;i++)
 }
 ```
 
+### continue 语句
 
+**continue 语句**中断当前的循环中的迭代,然后继续循环下一个迭代.以下例子在值为 3 时,直接跳过:
 
+for 实例:
 
+```
+for (i=0;i<=10;i++)
+{
+    if (i==3) continue;
+    x=x + "The number is " + i + "<br>";
+}
+```
 
+while 实例:
 
+```
+while (i < 10){
+  if (i == 3){
+    i++;    //加入i++不会进入死循环
+    continue;
+  }
+  x= x + "该数字为 " + i + "<br>";
+  i++;
+}
+```
 
+### JavaScript 标签
 
+我们可以对 JavaScript 语句进行标记
 
+如需标记 JavaScript 语句,请在语句之前加上冒号:
 
+```
+break labelname; 
+ 
+continue labelname;
+```
 
+continue 语句 (带有或不带标签应用) 只能在循环中.
 
+break 语句 (不带标签引用),只能用在循环或 switch 中.
+
+通过标签引用,break 语句 可用于跳出任何 JavaScript 代码块:
+
+```
+cars=["BMW","Volvo","Saab","Ford"];
+list: 
+{
+    document.write(cars[0] + "<br>"); 
+    document.write(cars[1] + "<br>"); 
+    document.write(cars[2] + "<br>"); 
+    break list;
+    document.write(cars[3] + "<br>"); 
+    document.write(cars[4] + "<br>"); 
+    document.write(cars[5] + "<br>"); 
+}
+```
+
+## JavaScript typeof
 
 
 
