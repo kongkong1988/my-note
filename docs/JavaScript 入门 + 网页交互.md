@@ -2135,6 +2135,253 @@ x 的结果是:
 
 ## JavaScript switch 语句
 
+switch 语句用于基于不同的条件来执行不同的动作.
+
+### JavaScript switch 语句
+
+请使用 switch 语句来选择要执行的多个代码块之一.
+
+```
+switch(n)
+{
+    case 1:
+        执行代码块 1
+        break;
+    case 2:
+        执行代码块 2
+        break;
+    default:
+        与 case 1 和 case 2 不同时执行的代码
+}
+```
+
+工作原理:首先设置表达式 *n* (通常是一个变量).随后表达式的值会与结构中的每个 case 的值做比较.如果存在匹配,则与该 case 关联的代码块会被执行.请使用 **break** 来阻止代码自动地向下一个 case 运行.
+
+```
+var d=new Date().getDay(); 
+switch (d) 
+{ 
+  case 0:x="今天是星期日"; 
+  break; 
+  case 1:x="今天是星期一"; 
+  break; 
+  case 2:x="今天是星期二"; 
+  break; 
+  case 3:x="今天是星期三"; 
+  break; 
+  case 4:x="今天是星期四"; 
+  break; 
+  case 5:x="今天是星期五"; 
+  break; 
+  case 6:x="今天是星期六"; 
+  break; 
+}var d=new Date().getDay(); 
+switch (d) 
+{ 
+  case 0:x="今天是星期日"; 
+  break; 
+  case 1:x="今天是星期一"; 
+  break; 
+  case 2:x="今天是星期二"; 
+  break; 
+  case 3:x="今天是星期三"; 
+  break; 
+  case 4:x="今天是星期四"; 
+  break; 
+  case 5:x="今天是星期五"; 
+  break; 
+  case 6:x="今天是星期六"; 
+  break; 
+}
+```
+
+x 的运行结果:
+
+今天是星期五
+
+### default 关键词
+
+请使用 default 关键词来规定匹配不存在时做的事情:
+
+```
+var d=new Date().getDay();
+switch (d)
+{
+    case 6:x="今天是星期六";
+    break;
+    case 0:x="今天是星期日";
+    break;
+    default:
+    x="期待周末";
+}
+document.getElementById("demo").innerHTML=x;
+```
+
+x 的运行结果:
+
+期待周末
+
+## JavaScript for 循环
+
+循环可以将代码块执行指定的次数.
+
+### JavaScript 循环
+
+如果我们希望一遍又一遍地运行相同的代码,并且每次的值都不同,那么使用循环是很方便的.
+
+我们可以这样输出数组的值:
+
+一般写法:
+
+```
+document.write(cars[0] + "<br>"); 
+document.write(cars[1] + "<br>"); 
+document.write(cars[2] + "<br>"); 
+document.write(cars[3] + "<br>"); 
+document.write(cars[4] + "<br>"); 
+document.write(cars[5] + "<br>");
+```
+
+使用 for 循环:
+
+```
+for (var i=0;i<cars.length;i++)
+{ 
+    document.write(cars[i] + "<br>");
+}
+```
+
+### 不同类型的循环
+
+JavaScript 支持不同类型的循环:
+
+- **for** - 循环代码块一定的次数
+
+- **for/in** - 循环遍历对象的属性
+
+- **while** - 当指定的条件为 true 时循环指定的代码块
+
+- **do/while** - 同样当指定的条件为 true 时循环指定的代码块
+
+### For 循环
+
+for 循环是我们在希望创建循环时常会用到的工具.
+
+下面是 for 循环的语法:
+
+```
+for (语句 1; 语句 2; 语句 3)
+{
+    被执行的代码块
+}
+```
+
+**语句 1** (代码块) 开始前执行
+
+**语句 2** 定义运行循环 (代码块) 的条件
+
+**语句 3** 在循环 (代码块) 已被执行之后执行
+
+```
+for (var i=0; i<5; i++)
+{
+      x=x + "该数字为 " + i + "<br>";
+}
+```
+
+从上面的例子中,我们可以看到:
+
+Statement 1 在循环开始之前设置变量 (var i=0).
+
+Statement 2 定义循环运行的条件 (i必须小于 5).
+
+Statement 3 在每次代码块已被执行后增加一个值 (i++).
+
+### 语句 1
+
+通常我们会使用 语句 1 初始化循环中所用的变量 (var i=0).
+
+语句 1 是可选的,也就是说不使用 语句 1 也可以.
+
+我们可以在 语句 1 中初始化任意 (或者多个) 值:
+
+```
+for (var i=0,len=cars.length; i<len; i++)
+{ 
+    document.write(cars[i] + "<br>");
+}
+```
+
+### 语句 2
+
+通常 语句 2 用于评估初始变量的条件.
+
+语句 2 同样是可选的.
+
+如果 语句 2 返回 true,则循环再次开始,如果返回 false,则循环将结束.
+
+***如果省略了 语句 2,那么必须在循环内提供 break.否则循环就无法停下来.这样有可能令浏览器崩溃.请在本教程稍后的章节阅读有关 break 的内容.***
+
+### 语句 3
+
+通常 语句 3 会增加初始变量的值.
+
+语句 3 也是可选的.
+
+语句 3 有多种用法.增量可以是负数 (i--),或者更大 (i=i+115).
+
+语句 3 也可以省略 (比如当循环内部有相应的代码时):
+
+```
+var i=0,len=cars.length;
+for (; i<len; )
+{ 
+    document.write(cars[i] + "<br>");
+    i++;
+}
+```
+
+### For/In 循环
+
+JavaScript for/in 语句循环遍历对象的属性:
+
+```
+var person={fname:"Bill",lname:"Gates",age:56}; 
+ 
+for (x in person)  // x 为属性名
+{
+    txt=txt + person[x];
+}
+```
+
+## JavaScript while 循环
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
