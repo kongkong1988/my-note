@@ -2442,9 +2442,38 @@ while (cars[i])
 
 ## JavaScript break 和 continue 语句
 
+break 语句用于跳出循环
 
+continue 用于跳过循环中的一个迭代
 
+### break 语句
 
+我们已经在本教程之前的章节中见到过 break 语句.它用于跳出 switch() 语句.
+
+break 语句可用于跳出循环.
+
+break 语句跳出循环后,会继续执行该循环之后的代码 (如果有的话):
+
+```
+for (i=0;i<10;i++)
+{
+    if (i==3)
+    {
+        break;
+    }
+    x=x + "The number is " + i + "<br>";
+}
+```
+
+由于这个 if 语句只有一行代码,所以可以省略花括号:
+
+```
+for (i=0;i<10;i++)
+{
+    if (i==3) break;
+    x=x + "The number is " + i + "<br>";
+}
+```
 
 
 
