@@ -3276,46 +3276,434 @@ function myFunction() {
 
 在程序代码中寻找错误叫做代码调试. 
 
+调试很难,但幸运的是,很多浏览器内置了调试工具.
 
+内置的调试工具可以开启或关闭,严重的错误信息会发送给用户.
 
+有了调试工具,我们就可以设置断点 (代码停止执行的位置),且可以在代码执行时检测变量.
 
+浏览器启用调试工具一般是按下 F12 键,并在调试菜单中选择 "Console".
 
+### console.log()方法
 
+如果浏览器支持调试,我们可以使用 console.log() 方法在调试窗口上打印 JavaScript 值:
 
+```
+a = 5;
+b = 6;
+c = a + b;
+console.log(c);
+```
 
+### 设置断点
 
+在调试窗口中,我们可以设置 JavaScript 代码的断点.
 
+在每个断点上,都会停止执行 JavaScript 代码,以便于我们检查 JavaScript 变量的值.
 
+在检查完毕后,可以重新执行代码 (如播放按钮).
 
+### debugger 关键字
 
+**debugger** 关键字用于停止执行 JavaScript,并调用调试函数.
 
+这个关键字与在调试工具中设置断点的效果一样的.
 
+如果没有调试可用,debugger 语句将无法工作.
 
+开启 debugger,代码在第三行前停止执行.
 
+```
+var x = 15 * 5;
+debugger;
+document.getElementbyId("demo").innerHTML = x;
+```
 
+### 主要浏览器的调试工具
 
+通常,浏览器启用调试工具一般是按下 F12 键,并在调试菜单中选择 "Console".
 
+## JavaScript 变量提升
 
+### JavaScript 声明提升
 
+JavaScript 中,函数及变量的声明都将被提升到函数的最顶部.
 
+JavaScript 中,变量可以在使用后声明,也就是变量可以先使用再声明.
 
+以下两个实例将获得相同的结果:
 
+```
+x = 5; // 变量 x 设置为 5
 
+elem = document.getElementById("demo"); // 查找元素 
+elem.innerHTML = x;                     
+// 在元素中显示 xvar x; // 声明 x
+```
 
+```
+var x; // 声明 x
+x = 5; // 变量 x 设置为 5
+elem = document.getElementById("demo"); // 查找元素 elem.innerHTML = x;                     
+// 在元素中显示 x
+```
 
+要理解以上实例就需要理解"hoisting(声明提升)".
 
+声明提升: 函数声明和变量声明总是会被解释器悄悄地被"提升"到方法体的最顶部.
 
+### JavaScript 初始化不会提升
 
+JavaScript 初始化不会提升,JavaScript 只有声明的变量部分会提升,初始化部分不会.
 
+以下两个实例结果不相同:
 
+```
+var x = 5; // 初始化 xvar y = 7; // 初始化 yelem = document.getElementById("demo"); // 查找元素 
+elem.innerHTML = x + " " + y;           // 显示 x 和 y
+```
 
+```
+var x = 5; // 初始化 x
 
+elem = document.getElementById("demo"); // 查找元素 
+elem.innerHTML = x + " " + y;           // 显示 x 和 y
 
+var y = 7; // 初始化 y
+```
 
+实例2的 y 输出了 **undefined**,这是因为变量声明 (var y) 提升了,但是初始化 (y=7) 并不会提升,所以 y 变量是一个未定义的变量.
 
+实例 2 类似以下代码:
 
+```
+var x = 5; // 初始化 x
+var y;     // 声明 y
 
+elem = document.getElementById("demo"); // 查找元素
+elem.innerHTML = x + " " + y;           // 显示 x 和 y
 
+y = 7;    // 设置 y 为 7
+```
 
+### 在头部声明自己的变量
 
+对于大多数程序员来说并不知道 JavaScript 声明提升.
+
+如果程序员不能很好的理解声明提升,他们写的程序就容易出现一些问题.
+
+为了避免这些问题,通常我们在每个作用域开始前声明这些变量,这也是正常的 JavaScript 解析步骤,易于我们理解.
+
+***JavaScript 严格模式 (strict mode) 不允许使用未声明的变量.***
+
+## JavaScript 严格模式 (strict mode)
+
+JavaScript 严格模式 (strict mode) 即在严格的条件下运行.
+
+### 使用 "use strict" 指令
+
+"use strict" 指令在 JavaScript 1.8.5 (ECMAScript5) 中新增.
+
+它不是一条语句,但是是一个字面量表达式,在 JavaScript 旧版本中会被忽略.
+
+"use strict" 的目的是指定代码在严格条件下执行.
+
+严格模式下我们不能使用未声明的变量.
+
+***支持严格模式的浏览器: Internet Explorer 10 +、Firefox 4+、 Chrome 13+、 Safari 5.1+、 Opera 12+.***
+
+### 严格模式声明
+
+严格模式通过在脚本或函数的头部添加 **use strict;** 表达式来声明.
+
+我们可以在浏览器按下 **F12 (或点击 "工具>更多工具>开发者工具")** 开启调试模式,查看报错信息.
+
+为社么使用严格模式:
+
+- 消除 JavaScript 语法的一些不合理,不严谨之处,减少一些怪异行为.
+
+- 消除代码运行的一些不安全之处,保证代码运行的安全.
+
+- 提高编译器效率,增加运行速度.
+
+- 为未来新版本的 JavaScript 做好铺垫.
+
+"严格模式" 体现了 JavaScript 更合理,更安全,更严谨的发展方向,包括 IE 10 在内的主流浏览器,都已经支持它,许多大项目已经喀什全面拥抱它了.
+
+另一方面,同样的代码,在 "严格模式" 中,可能会有不一样的运行结果;一些在 "正常模式" 下可以运行的语句,在 "严格模式" 下将不能运行.掌握这些内容,有助于更细致深入地理解 JavaScript,让我们变成一个更好的程序员.
+
+### 严格模式的限制
+
+不允许使用未声明的变量:
+
+```
+"use strict";
+x = 3.14;                // 报错 (x 未定义)
+```
+
+***对象也是一个变量***
+
+```
+"use strict";
+x = 
+ {p1:10, p2:20};      // 报错 (x 未定义)
+```
+
+不允许删除变量或对象.
+
+```
+"use strict";var x = 3.14;
+delete x;                // 报错
+```
+
+不允许删除函数.
+
+```
+"use strict";function x(p1, p2) {}; delete x;                
+ // 报错
+```
+
+不允许变量重名:
+
+```
+"use strict";function x(p1, p1) {};   // 报错
+```
+
+不允许使用八进制:
+
+```
+"use strict";var x = 010;             // 报错
+```
+
+不允许使用转义字符:
+
+```
+"use strict";
+var x = \010;            // 报错
+```
+
+不允许对只读属性赋值:
+
+```
+"use strict";var obj = {};
+Object.defineProperty(obj, "x", {value:0, writable:false});
+obj.x = 3.14;            // 报错
+```
+
+不允许对一个使用 getter 方法读取的属性进行赋值
+
+```
+"use strict";var obj = {get x() 
+{return 0} };obj.x = 3.14;            // 报错
+```
+
+不允许删除一个不允许删除的属性:
+
+```
+"use strict";delete Object.prototype; // 报错
+```
+
+变量名不能使用 "eval" 字符串:
+
+```
+"use strict";var eval = 3.14;         // 报错
+```
+
+变量名不能使用 "arguments" 字符串:
+
+```
+"use strict";var arguments = 3.14;    // 报错
+```
+
+不允许使用以下这种语句:
+
+```
+"use strict";with (Math){x = cos(2)}; // 报错
+```
+
+由于一些安全原因,在作用域 eval() 创建的变量不能被调用:
+
+```
+"use strict";eval ("var x = 2");
+alert (x);               // 报错
+```
+
+禁止 this 关键字指向全局对象.
+
+```
+function f(){
+    return !this;
+} 
+// 返回false，因为"this"指向全局对象，"!this"就是false
+
+function f(){ 
+    "use strict";
+    return !this;
+} 
+// 返回true，因为严格模式下，this的值为undefined，所以"!this"为true。
+```
+
+因此,使用构造函数时,如果忘了加 new,this 不再指向全局对象,而是报错.
+
+```
+function f(){
+    "use strict";
+    this.a = 1;
+};
+f();// 报错，this未定义
+```
+
+### 保留关键字
+
+为了向将来 JavaScript 的新版本过渡,严格模式新增了一些保留关键字:
+
+- implements
+
+- interface
+
+- let
+
+- package
+
+- private
+
+- protected
+
+- public
+
+- static
+
+- yield
+
+```
+"use strict";var public = 1500;      // 报错
+```
+
+## JavaScript 使用误区
+
+### 赋值运算符应用错误
+
+在 JavaScript 程序中如果我们在 if 条件语句中使用赋值运算符的等号 (=) 将会产生一个错误结果,正确的方法是使用比较运算符的两个等号 (==).
+
+**if** 条件语句返回 **false** (是我们预期的) 因为 x 不等于 10:
+
+```
+var x = 0;
+if (x == 10)
+```
+
+**if** 条件语句返回 **true** (不是我们预期的) 因为条件语句执行为 x 赋值 10, 10 为 true:
+
+```
+var x = 0;
+if (x = 10)
+```
+
+**if** 条件语句返回 **false** (不是我们预期的) 因为条件语句执行为 x 赋值 0, 0 为 false
+
+```
+var x = 0;
+if (x = 0)
+```
+
+***赋值语句返回变量的值.***
+
+### 比较运算符常见错误
+
+在常规的比较中,数据类型是被忽略的,以下 if 条件语句返回 true:
+
+```
+var x = 10;var y = "10";if (x == y)
+```
+
+在严格的比较运算中, === 为恒等计算符,同时检查表达式的值与类型,以下 if 条件语句返回 false:
+
+```
+var x = 10;
+var y = "10";
+if (x === y)
+```
+
+这种错误经常会在 switch 语句中出现,switch 语句会使用恒等计算符 (===) 进行比较:
+
+以下示例会执行 alert 弹窗:
+
+```
+var x = 10;
+switch(x) {
+    case 10: alert("Hello");
+    }
+```
+
+### 加法与连接注意事项
+
+**加法**是两个**数字**相加.
+
+**连接**是两个**字符串**连接.
+
+JavaScript 的加法和连接都使用 + 运算符.
+
+接下来我们可以通过实例查看两个数字相加及数字与字符串连接的区别:
+
+```
+var x = 10 + 5;          // x 的结果为 15
+var x = 10 + "5";        // x 的结果为 "105"
+```
+
+使用变量相加结果也不一致:
+
+```
+var x = 10;
+var y = 5;
+var z = x + y;            // z 的结果为 15
+var x = 10;
+var y = "5";
+var z = x + y;            // z 的结果为 "105"
+```
+
+### 浮点型数据使用注意事项
+
+JavaScript 中的所有数据都是以 64 位 **浮点型数据(float)** 来存储.
+
+所有的变成语言,包括 JavaScript,对浮点型数据的精确度都很难确定:
+
+```
+var x = 0.1;
+var y = 0.2;
+var z = x + y             // z 的结果为 0.30000000000000004
+if (z == 0.3)             // 返回 false
+```
+
+为解决以上问题,可以用整数的乘除法来解决:
+
+```
+var z = (x * 10 + y * 10) / 10;       // z 的结果为 0.3
+```
+
+更多内容可以参考: [JavaScript 中精度问题以及解决方案](https://www.runoob.com/w3cnote/js-precision-problem-and-solution.html)
+
+### JavaScript 字符串分行
+
+JavaScript 允许我们在字符串中使用断行语句:
+
+```
+var x =
+"Hello World!";
+```
+
+但是,在字符串中直接使用回车换行是会报错的:
+
+```
+var x = "HelloWorld!";
+```
+
+我们可以在选择开发工具或按下 F12 来查看错误信息.
+
+字符串断行需要使用反斜杠 (\\),如下所示:
+
+```
+var x = "Hello \World!";
+```
+
+### 错误的使用分号
 
