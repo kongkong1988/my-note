@@ -3707,3 +3707,158 @@ var x = "Hello \World!";
 
 ### 错误的使用分号
 
+以下实例汇总,if 语句的方法体作为独立的代码块被执行,导致错误的输出结果.
+
+由于分号使用错误,if 语句中的代码块就一定会执行:
+
+```
+if (x == 19);
+{
+	    // code block
+}
+```
+
+### return 语句使用注意事项
+
+JavaScript 默认是在一行的末尾自动结束.
+
+以下两个实例返回结果是一样的 (一个有分号一个没有):
+
+```
+function myFunction(a) {    
+	var power = 10
+	return a * power
+}
+```
+
+```
+function myFunction(a) {    
+	var power = 10;
+	return a * power;
+}
+```
+
+JavaScript 也可以使用多行来表示一个语句,也就是说一个语句是可以分行的.
+
+以下实例返回相同的结果:
+
+```
+function myFunction(a) {
+	var    power = 10;
+	return a * power;
+}
+```
+
+但是,以下实例结果会返回 **undefined**:
+
+实例4
+
+```
+function myFunction(a) {    
+	var    power = 10;
+    return    a * power;
+}
+```
+
+为什么会有这样的结果呢?因为在 JavaScript 中,实例 4 的代码与下面的代码一致:
+
+```
+function myFunction(a) {
+    var
+    power = 10;  
+    return;       // 分号结束，返回 undefined
+    a * power;
+}
+```
+
+**解析**
+
+如果是一个不完整的语句,如下所示:
+
+    var
+
+JavaScript 将尝试读取第二行的语句:
+
+    power = 10;
+
+但是由于这样的语句是完整的:
+
+    return
+
+JavaScript 将自动关闭语句:
+
+    return;
+
+在 JavaScript 中,分号是可选的.
+
+由于 return 是一个完整的语句,所以 JavaScript 将关闭 return 语句.
+
+***注意: 不用对 return 语句进行断行.***
+
+### 数组中使用名字来索引
+
+许多程序语言都允许使用名字来作为数组的索引.
+
+使用名字来作为索引的数组称为关联数组 (或哈希).
+
+JavaScript 不支持使用名字来索引数组,只允许使用数字索引.
+
+```
+var person = [];
+person[0] = "John";
+person[1] = "Doe";
+person[2] = 46;
+var x = person.length;          // person.length 返回 3v
+ar y = person[0];               // person[0] 返回 "John"
+```
+
+### 定义数组元素,最后不能添加逗号
+
+数组最后一个值的后面添加逗号虽然语法没有问题,但是在不同的浏览器可能得到不同的结果.
+
+    var colors = [5, 6, 7,]; //这样数组的长度可能为3 也可能为4。
+
+正确的定义方式:
+
+    points = [40, 100, 1, 5, 25, 10];
+
+### 定义对象,最后不能添加逗号
+
+错误的定义方式:
+
+    websites = {site:"菜鸟教程", url:"www.runoob.com", like:460,}
+
+正确的定义方式:
+
+    websites = {site:"菜鸟教程", url:"www.runoob.com", like:460}
+
+### Undefined 不是 Null
+
+在 JavaScript 中,**null** 用于对象,**undefined** 用于变量,属性和方法.
+
+对象只有被定义才有可能为 null,否则为 undefined.
+
+如果我们向测试对象是否存在,在对象还没定义时将会抛出一个错误.
+
+错误的使用方式:
+
+    if (myObj !== null && typeof myObj !== "undefined") 
+
+正确的方式是我们需要先使用 typeof 来检测对象是否已定义:
+
+    if (typeof myObj !== "undefined" && myObj !== null) 
+
+### 程序块作用域
+
+在每个代码块中 JavaScript 不会创建一个新的作用域,一般各个代码的作用域都是全局的.
+
+以下代码的变量 i 返回 10,而不是 undefined:
+
+```
+for (var i = 0; i < 10; i++) {
+    // some code
+ }
+ return i;
+```
+
+## JavaScript 表单
