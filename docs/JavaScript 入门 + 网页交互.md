@@ -3862,3 +3862,7 @@ for (var i = 0; i < 10; i++) {
 ```
 
 ## JavaScript 表单
+
+### JavaScript 表单验证
+
+HTML 表单验证可以通过 JavaScript 来完成.
