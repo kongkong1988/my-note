@@ -4091,7 +4091,7 @@ if (validateEmail(email)) {
 ### 约束验证 DOM 方法
 
 |Property|Description|
-|:-:|:-:|
+|:-|:-|
 |checkValidity()|如果 input 元素中的数据是合法的返回 true,否则返回 false.|
 |setCustomValidity()|设置 input 元素的 validationMessage 属性,用于自定义错误提示信息的方法.<br>使用 setCustomValidity 设置了自定义提示后,validity.customError 就会变成 true,checkValidity 总是会返回 false.<br>如果要重新判断需要取消自定义提示,方式如下:<br>setCustomValidity('')<br>setCustomValidity(null)<br>setcustomvalidity(undefined)|
 
