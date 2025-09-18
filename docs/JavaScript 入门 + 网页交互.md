@@ -3866,3 +3866,233 @@ for (var i = 0; i < 10; i++) {
 ### JavaScript 表单验证
 
 HTML 表单验证可以通过 JavaScript 来完成.
+
+以下实例代码用于判断表单字段 (fname) 值是否存在,如果不存在,就弹出信息,组织表单提交:
+
+```
+function validateForm() {
+    var x = document.forms["myForm"]["fname"].value;
+    if (x == null || x == "") {
+        alert("需要输入名字。");
+        return false;
+    }
+}
+```
+
+以上是 JavaScript 代码可以通过 HTML 代码来调用:
+
+```
+<form name="myForm" action="demo_form.php" onsubmit="return validateForm()" method="post">
+名字: <input type="text" name="fname">
+<input type="submit" value="提交">
+</form>
+```
+
+### JavaScript 验证输入的数字
+
+JavaScript 常用于对输入数字的验证
+
+### HTML 表单自动验证
+
+HTML 表单验证也可以通过浏览器来自动完成
+
+如果表单字段 (fname) 的值为空,required 属性会阻止表单提交:
+
+```
+<form action="demo_form.php" method="post">
+  <input type="text" name="fname" required="required">
+  <input type="submit" value="提交">
+</form>
+```
+
+### 数据验证
+
+数据验证用于确保用户输入的数据是有效的.
+
+典型的数据验证有:
+
+- 必需字段是否有输入?
+
+- 用户是否输入了合法的数据?
+
+- 在数字字段是否输入了文本?
+
+大多数情况下,数据验证用于确保用户正确输入数据.
+
+数据验证可以使用不同的方法来定义,并通过多种方式来调用.
+
+**服务端数据验证**是在数据提交到服务器上后再验证.
+
+**客户端数据验证**是在数据发送到服务器前,在浏览器上完成验证.
+
+### HTML 约束验证
+
+HTML5 新增了 HTML 表单的验证方式:约束验证 (constraint validation).
+
+约束验证是表单被提交时浏览器用来实现验证的一种算法.
+
+HTML 约束验证基于:
+
+- **HTML 输入属性**
+
+- **CSS 伪类选择器**
+
+- **DOM 属性和方法**
+
+**约束验证 HTML 输入属性**
+
+|属性|描述|
+|:-:|:-:|
+|disabled|规定输入的元素不可用|
+|max|规定输入元素的最大值|
+|min|规定输入元素的最小值|
+|pattern|规定输入元素值的模式|
+|required|规定输入元素字段是必需的|
+|type|规定输入元素的类型|
+
+完整列表,请查看 [HTML 输入属性](https://www.runoob.com/html/html5-form-attributes.html).
+
+**约束验证 CSS 伪类选择器**
+
+|选择器|描述|
+|:-:|:-:|
+|:disabled|选取属性为 "disabled" 属性的 input 元素|
+|:invalid|选取无效的 input 元素|
+|:optional|选择没有 "optional" 属性的 input 元素|
+|:required|选择有 "required" 属性的 input 元素|
+|:valid|选取有效值的 input 元素|
+
+完整列表,请查看 [CSS 伪类](https://www.runoob.com/css/css-pseudo-classes.html).
+
+## JavaScript 表单验证
+
+表单验证是确保用户输入的数据符合预期格式和规则的过程.
+
+在 Web 开发中,表单验证通常用于检查用户输入的有效性,例如电子邮件地址、密码、电话号码等.
+
+通过表单验证,可以防止无效数据提交到服务器,从而提高数据的准确性和安全性.
+
+### JavaScript 表单验证
+
+JavaScript 可用来在数据被送往服务器前对 HTML 表单中的这些输入数据进行验证.
+
+表单数据经常需要使用 JavaScript 来验证其正确性:
+
+- 验证表单数据是否为空?
+
+- 验证输入是否是一个正确的 email 地址?
+
+- 验证日期是否输入正确?
+
+- 验证表单输入内容是否为数字型?
+
+**为什么需要表单验证?**
+
+1. **数据准确性:** 确保用户输入的数据符合预期格式,避免无效数据.
+
+2. **安全性:** 防止恶意用户提交有害数据,如 SQL 注入、跨站脚本攻击 （XSS） 等.
+
+3.  **用户体验:** 及时反馈用户输入错误,帮助用户快速纠正问题.
+
+### JavaScript 表单验证的基本方法
+
+JavaScript 提供了多种方法来实现表单验证.以下是几种常见的方式:
+
+1. **使用 HTML5 内置验证**
+
+HTML5 提供了一些内置的表单验证功能,例如 required、pattern、min、max等属性。这些属性可以简单地实现基本的表单验证.
+
+```
+<form>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+  <input type="submit" value="Submit">
+</form>
+```
+
+在上面的例子中, required 属性确保用户必需输入电子邮件地址,而 type="email" 会自动验证输入是否为有效的电子邮件格式.
+
+2. **使用 JavaScript 自定义验证过**
+
+下面的函数用来检查用户是否已填写表单中的必填 (或必选) 项目.假如必需或必选项为空,那么警告会弹出,,并且函数的返回值为 false,否则函数的返回值则为 true (意味着数据没有问题):
+
+```
+function validateForm()
+{
+  var x=document.forms["myForm"]["fname"].value;
+  if (x==null || x=="")
+  {
+    alert("姓必须填写");
+    return false;
+  }
+}
+```
+
+以上函数在 form 表单提交时被调用:
+
+```
+<form name="myForm" action="demo-form.php" onsubmit="return validateForm()" method="post">
+姓: <input type="text" name="fname">
+<input type="submit" value="提交">
+</form>
+```
+
+### E-mail 验证
+
+下面的函数检查输入的数据是否符合电子邮件地址的基本语法.
+
+意思就是说,输入的数据必需包含 @ 符号和点号 (.).同时,@ 不可以是邮件地址的首字符,并且 @ 之后需有至少一个点号:
+
+```
+function validateForm(){
+  var x=document.forms["myForm"]["email"].value;
+  var atpos=x.indexOf("@");
+  var dotpos=x.lastIndexOf(".");
+  if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+    alert("不是一个有效的 e-mail 地址");
+    return false;
+  }
+}
+```
+
+下面是连通 HTML 表单的完整代码:
+
+```
+<form name="myForm" action="demo-form.php" onsubmit="return validateForm();" method="post">
+    Email: <input type="text" name="email">
+    <input type="submit" value="提交">
+</form>
+```
+
+**使用正则表达式进行验证**
+
+正则表达式 (Regular Expression) 是一种强大的工具,可以用于匹配复杂的字符串模式.
+
+以下是一个使用正则表达式验证电子邮件地址的例子:
+
+```
+function validateEmail(email) {
+  var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+var email = "example@example.com";
+if (validateEmail(email)) {
+  console.log('Valid email address.');
+} else {
+  console.log('Invalid email address.');
+}
+```
+
+在这个例子中,我们定义了一个正则表达式来验证电子邮件地址的格式.如果输入的电子邮件地址符合格式要求,函数会返回 true,否则返回 false.
+
+## JavaScript 验证 API
+
+### 约束验证 DOM 方法
+
+|Property|Description|
+|:-:|:-:|
+|checkValidity()|如果 input 元素中的数据是合法的返回 true,否则返回 false.|
+|setCustomValidity()|设置 input 元素的 validationMessage 属性,用于自定义错误提示信息的方法.<br>使用 setCustomValidity 设置了自定义提示后,validity.customError 就会变成 true,checkValidity 总是会返回 false.<br>如果要重新判断需要取消自定义提示,方式如下:<br>setCustomValidity('')<br>setCustomValidity(null)<br>setcustomvalidity(undefined)|
+
+以下实例如果输入信息不合法,则返回错误信息:
