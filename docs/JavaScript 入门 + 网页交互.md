@@ -4222,3 +4222,177 @@ this	throw	throws	transient	true
 try	typeof	var	void	volatile
 while	with	yield
 * 标记的关键字是 ECMAScript5 中新添加的。
+
+### JavaScript 对象、属性和方法
+
+我们也应该避免使用 JavaScript 内置的对象、属性和方法的名称作为 JavaScript 的变量或函数名：
+
+
+Array	Date	eval	function	hasOwnProperty
+Infinity	isFinite	isNaN	isPrototypeOf	length
+Math	NaN	name	Number	Object
+prototype	String	toString	undefined	valueOf
+
+### Java 保留关键字
+
+JavaScript 经常与 java 一起使用。我们应该避免使用一些 Java 对象和属性作为 JavaScript 标识符：
+
+getClass	java	JavaArray	javaClass	JavaObject	JavaPackage
+
+### Window 保留关键字
+
+JavaScript 可以在 HTML 外部使用。它可在许多其他应用程序中作为编程语言使用。
+
+在 HTML 中，我们必需 （为了可移植性，我们也应该这么做） 避免使用 HTML 和 Window 对象和属性的名称作为 JavaScript 的变量及函数名：
+
+
+alert	all	anchor	anchors	area
+assign	blur	button	checkbox	clearInterval
+clearTimeout	clientInformation	close	closed	confirm
+constructor	crypto	decodeURI	decodeURIComponent	defaultStatus
+document	element	elements	embed	embeds
+encodeURI	encodeURIComponent	escape	event	fileUpload
+focus	form	forms	frame	innerHeight
+innerWidth	layer	layers	link	location
+mimeTypes	navigate	navigator	frames	frameRate
+hidden	history	image	images	offscreenBuffering
+open	opener	option	outerHeight	outerWidth
+packages	pageXOffset	pageYOffset	parent	parseFloat
+parseInt	password	pkcs11	plugin	prompt
+propertyIsEnum	radio	reset	screenX	screenY
+scroll	secure	select	self	setInterval
+setTimeout	status	submit	taint	text
+textarea	top	unescape	untaint	window
+
+### HTML 事件句柄
+
+除此之外，我们还应该避免使用 HTML 事件句柄的名称作为 JavaScript 的变量及函数名。
+
+实例：
+
+onblur	onclick	onerror	onfocus
+onkeydown	onkeypress	onkeyup	onmouseover
+onload	onmouseup	onmousedown	onsubmit
+
+## JavaScript this
+
+### JavaScript this 关键字
+
+面向对象语言中 this 表示当前对象的一个引用。
+
+但在 JavaScript 中 this 不是固定不变的，它会随着执行环境的改变而改变。
+
+- 在方法中，this 表示该方法所属的对象
+
+- 如果单独使用，this 表示全局对象
+
+- 在函数中，this 表示全局对象。
+
+- 在函数中，在严格模式下，this 是未定义的 （undefined）。
+
+- 在事件中，this 表示接受事件的元素。
+
+- 类似 call() 和 apply() 方法可以将 this 引用到任何对象.
+
+```
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+```
+
+###  方法中的 this
+
+在对象方法中,this 指向调用它所在方法的对象.
+
+在上面一个实例中,this 表示 person 对象.
+
+fullName 方法所属的对象就是 person.
+
+```
+fullName : function() {
+  return this.firstName + " " + this.lastName;
+}
+```
+
+### 单独使用 this
+
+单独使用 this,则它指向全局 (Global) 对象.
+
+在浏览器中,window 就是该全局尾箱为 **[object Window]:**
+
+```
+var x = this;
+```
+
+严格模式下,如果单独使用,this 也是指向全局 (Global) 对象.
+
+```
+"use strict";
+var x = this;
+```
+
+### 函数中使用 this (默认)
+
+在函数中,函数的所属这默认绑定到 this 上.
+
+在浏览器中,window 就是该全局对象为 **[object Window]:**
+
+```
+function myFunction() {
+  return this;
+}
+```
+
+### 函数中使用 this (严格模式)
+
+严格模式下函数是没有绑定到 this 上,这时候 this 是 **undefined**.
+
+```
+"use strict";
+function myFunction() {
+  return this;
+}
+```
+
+### 事件中的 this
+
+在 HTML 事件句柄中,this 指向了接受事件的 HTML 元素:
+
+```
+<button onclick="this.style.display='none'">
+点我后我就消失了
+</button>
+```
+
+### 对象方法中绑定
+
+下面实例中,this 是 person 对象,person 对象是函数的所有者;
+
+```
+var person = {
+  firstName  : "John",
+  lastName   : "Doe",
+  id         : 5566,
+  myFunction : function() {
+    return this;
+  }
+};
+```
+
+```
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+```
+
+说明: **this.firstName** 表示 **this** (person) 对象的 **firstName** 属性.
