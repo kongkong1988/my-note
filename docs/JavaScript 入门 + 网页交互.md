@@ -5025,4 +5025,4 @@ function getValue(){
 
 以上是关于异步的概念的解释,接下来我们通俗地解释一下异步:异步就是从主线程发射一个子线程来完成任务.
 
-![图片](./image/async-sync.png)
+![图片](./img/async-sync.png)
