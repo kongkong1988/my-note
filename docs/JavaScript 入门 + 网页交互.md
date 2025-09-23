@@ -4950,3 +4950,77 @@ document.getElementById("demo").innerHTML = obj.sites[1].name + " " + obj.sites[
 |JSON.stringify()|用于将 JavaScript 值转换为 JSON 字符串.|
 
 ## JavaScript void
+
+### javascript:void(0) 含义
+
+我们经常会使用到 **javascript:void(0)** 这样的代码,那么在 JavaScript 中 **javascript:void(0)** 代表的是什么意思呢?
+
+**javascript:void(0)** 中最关键的是 **void** 关键字, **void** 是JavaScript 这种非常重要的关键字,该操作符指定要计算一个表达式但是不返回值.
+
+语法格式如下:
+
+```
+void func()
+javascript:void func()
+```
+
+```
+void(func())
+javascript:void(func())
+```
+
+下面的代码创建了一个超级链接,当用户点击以后不会发生任何事.
+
+```
+<a href="javascript:void(0)">单击此处什么也不会发生</a>
+```
+
+当用户点击链接时, void(0) 计算为 0,但 JavaScript 上没有任何效果.
+
+以下实例中,在用户点击链接后显示警告信息:
+
+```
+<p>点击以下链接查看结果：</p>
+<a href="javascript:void(alert('Warning!!!'))">点我!</a>
+```
+
+以下实例中参数 a 将返回 undefined:
+
+```
+function getValue(){
+   var a,b,c;
+   a = void ( b = 5, c = 7 );
+   document.write('a = ' + a + ' b = ' + b +' c = ' + c );
+}
+```
+
+### href="#"与href="javascripr:void(0)"的区别
+
+**#** 包含了一个位置信息,默认的锚是 **#top** 也就是网页的上端.
+
+而 JavaScript:void(0),仅仅表示一个死链接.
+
+在页面很长的时候会使用 **#** 来定位页面的具体位置,格式为: **# + id**.
+
+如果我们要定义一个死链接请使用 JavaScript:void(0).
+
+```
+<a href="javascript:void(0);">点我没有反应的!</a>
+<a href="#pos">点我定位到指定位置!</a>
+<br>
+...
+<br>
+<p id="pos">尾部定位点</p>
+```
+
+## JavaScript 异步编程
+
+**异步的概念**
+
+异步 (Asynchronous,async) 与同步 (Synchronous,sync) 相对的概念.
+
+在我们学习的传统单线程编辑中,程序的运行是同步的 (同步不意味着所有步骤同时运行,而是指步骤在一个控制流序列中按顺序执行) .而异步的概念则是不保证同步的概念,也就是说,一个异步过程的执行将不再与原有的序列有顺序关系.
+
+简单来解释就是: 同步按我们的代码顺序执行,异步不按照代码顺序执行,异步的效率更高.
+
+以上是关于异步的概念的解释,接下来我们通俗地解释一下异步:异步就是从主线程发射一个子线程来完成任务.
