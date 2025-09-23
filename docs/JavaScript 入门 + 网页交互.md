@@ -5026,3 +5026,356 @@ function getValue(){
 以上是关于异步的概念的解释,接下来我们通俗地解释一下异步:异步就是从主线程发射一个子线程来完成任务.
 
 ![图片](./img/async-sync.png)
+
+**什么时候用异步编程**
+
+在前端编程中 (甚至后端有时也是这样) , 我们在处理一些简短,快速的操作时,例如计算 1+1 的结果,往往在主线中就可以完成.主线作为一个线程,不能够同时接受多方面的请求.所以,当一个事件没有结束时,界面将无法处理其他请求.
+
+现在有一个按钮,如果我们设置它的 onclick 事件为一个死循环,那么当这个按钮按下,整个网页将失去相应.
+
+为了避免这种情况的发生,我们常常用子线程来完成一些可能消耗时间足够长以至于被用户察觉的事情,比如读取一个大文件或者发出一个网络请求.因为子线程独立于主线程的运行.但是子线程有一个局限: 一旦发射了以后就会与主线程失去同步,我们无法确定它的结束,如果结束之后需要处理一些事情,比如处理来自服务器的信息,我们是无法将它合并到主线程中去的.
+
+**回调函数**
+
+回调函数就是一个函数,它是在我们启动一个异步任务的时候就告诉它:等你完成了这个任务之后要干什么.这样一来主线程几乎不用关心异步任务的状态了,他自己会善始善终.
+
+```
+function print() {
+    document.getElementById("demo").innerHTML="RUNOOB!";
+}
+setTimeout(print, 3000);
+```
+
+这段程序中的 setTimeout 就是一个消耗时间较长 (3 秒) 的过程,它的第一个参数是个回调函数,第二个参数是毫秒数,这个函数执行之后会产生一个子线程,子线程等待 3 秒,然后执行回调函数 "print",在命令行输出 "RUNOOB".
+
+当然,JavaScript 语法十分友好,我们不必单独定义一个函数 print,我们常常将上面的程序携程:
+
+```
+setTimeout(function () {
+    document.getElementById("demo").innerHTML="RUNOOB!";
+}, 3000);
+```
+
+**注意:** 既然setTimeout 会在子线程中等待 3 秒,在setTimeout 函数执行后主线程并没有停止,所以:
+
+```
+setTimeout(function () {
+    document.getElementById("demo1").innerHTML="RUNOOB-1!";  // 三秒后子线程执行
+}, 3000);
+document.getElementById("demo2").innerHTML="RUNOOB-2!";      // 主线程先执行
+```
+
+这段程序的执行结果是:
+
+```
+RUNOOB-1!    // 三秒后子线程执行
+RUNOOB-2!    // 主线程先执行
+```
+
+### 异步 AJAX
+
+除了 setTimeout 函数以外,异步回调广泛应用于 AJAX 编程.有关于 AJAX 详细请参见: [AJAX 教程](https://www.runoob.com/ajax/ajax-tutorial.html).
+
+XMLHttpRequest 常常用于请求来自远程服务器上的 XML 或 JSON 数据.一个标准的 XMLHttpRequest 对象往往包含多个回调:
+
+```
+var xhr = new XMLHttpRequest();
+ 
+xhr.onload = function () {
+    // 输出接收到的文字数据
+    document.getElementById("demo").innerHTML=xhr.responseText;
+}
+ 
+xhr.onerror = function () {
+    document.getElementById("demo").innerHTML="请求出错";
+}
+ 
+// 发送异步 GET 请求
+xhr.open("GET", "https://www.runoob.com/try/ajax/ajax_info.txt", true);
+xhr.send();
+```
+
+XMLHttpRequest 的 onload 属性都是函数,分别在它请求成功和请求失败时被调用.如果我们使用完整的 jQuery 库,也可以更加优雅的使用异步 AJAX:
+
+```
+$.get("https://www.runoob.com/try/ajax/demo_test.php",function(data,status){
+    alert("数据: " + data + "\n状态: " + status);
+});
+```
+
+## JavaScript Promise
+
+Promise 是一个 ECMAScript 6 提供的类,目的是更加优雅地书写复杂的异步任务.
+
+Promise 是 JavaScript 中用于处理异步操作的对象,它代表一个异步操作的最终完成 (或失败) 及其结果值.
+
+简单来说, Promise 是一个"承诺",表示将来某个时间点会返回一个结果 (可能是成功的结果,也可能是失败的原因).
+
+Promise 有三种状态:
+
+- pending: 初始状态,既不是成功,也不是失败状态.
+
+- fulfilled: 意味着操作成功完成.
+
+- rejected: 意味着操作失败.
+
+![图片](./img/JavaScript_promise.png)
+
+```
+const myPromise = new Promise((resolve, reject) => {
+  // 异步操作代码
+  
+  if (/* 操作成功 */) {
+    resolve('成功的结果'); // 将 Promise 状态改为 fulfilled
+  } else {
+    reject('失败的原因'); // 将 Promise 状态改为 rejected
+  }
+});
+```
+
+### Promise 的使用方法
+
+**then() 方法**
+
+then() 方法用于指定 Promise 状态变为 fulfilled 或 rejected 时的回调函数.
+
+```
+myPromise.then(
+  (result) => {
+    // 处理成功情况
+    console.log('成功:', result);
+  },
+  (error) => {
+    // 处理失败情况
+    console.error('失败:', error);
+  }
+);
+```
+
+**catch() 方法**
+
+catch () 方法 专门用于处理 Promise 被拒绝的状况.
+
+```
+myPromise
+  .then((result) => {
+    console.log('成功:', result);
+  })
+  .catch((error) => {
+    console.error('失败:', error);
+  });
+```
+
+**finally() 方法**
+
+finally() 方法无论 Promise 最终状态如何都会执行.
+
+```
+myPromise
+  .then((result) => {
+    console.log('成功:', result);
+  })
+  .catch((error) => {
+    console.error('失败:', error);
+  })
+  .finally(() => {
+    console.log('操作完成');
+  });
+```
+
+### Promise 的链式调用
+
+Promise 的一个强大特性是可以链式调用多个异步操作.
+
+```
+doFirstThing()
+  .then((result) => doSecondThing(result))
+  .then((newResult) => doThirdThing(newResult))
+  .then((finalResult) => {
+    console.log('最终结果:', finalResult);
+  })
+  .catch((error) => {
+    console.error('链中某处出错:', error);
+  });
+```
+
+### Promise 的静态方法
+
+**Promise.all()**
+
+等待所有 Promise 完成,或任意一个 Promise 失败.
+
+```
+Promise.all([promise1, promise2, promise3])
+  .then((results) => {
+    // results 是一个包含所有 Promise 结果的数组
+    console.log(results);
+  })
+  .catch((error) => {
+    // 任一 Promise 失败就会进入这里
+    console.error(error);
+  });
+```
+
+**Promise.race()**
+
+返回最先完成 (无论成功或失败) 的 Promise 的结果.
+
+```
+Promise.race([promise1, promise2, promise3])
+  .then((result) => {
+    // 使用最先完成的 Promise 的结果
+    console.log(result);
+  })
+  .catch((error) => {
+    // 如果最先完成的 Promise 是失败的
+    console.error(error);
+  });
+```
+
+**Promise.resolve() 和 Promise.reject()**
+
+快速创建已解决或已拒绝的 Promise
+
+```
+const resolvedPromise = Promise.resolve('立即解决的值');
+const rejectedPromise = Promise.reject('立即拒绝的原因');
+```
+
+### 实际应用示例
+
+**示例1:使用 Promise 处理 AJAX 请求**
+
+```
+function fetchData(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        resolve(xhr.response);
+      } else {
+        reject(new Error(xhr.statusText));
+      }
+    };
+    xhr.onerror = () => reject(new Error('网络错误'));
+    xhr.send();
+  });
+}
+
+fetchData('https://api.example.com/data')
+  .then((data) => {
+    console.log('获取数据成功:', data);
+  })
+  .catch((error) => {
+    console.error('获取数据失败:', error);
+  });
+```
+
+**示例2:使用 Promise 链处理多个异步操作**
+
+```
+function getUser(userId) {
+  return fetch(`/users/${userId}`);
+}
+
+function getPosts(userId) {
+  return fetch(`/users/${userId}/posts`);
+}
+
+getUser(123)
+  .then((user) => {
+    console.log('获取用户信息:', user);
+    return getPosts(user.id);
+  })
+  .then((posts) => {
+    console.log('获取用户帖子:', posts);
+  })
+  .catch((error) => {
+    console.error('操作失败:', error);
+  });
+```
+
+### 常见问题与最佳实践
+
+1. 避免 Promise 嵌套
+
+错误做法 (回调地狱的 Promise 版本):
+
+```
+doFirstThing().then((firstResult) => {
+  doSecondThing(firstResult).then((secondResult) => {
+    doThirdThing(secondResult).then((thirdResult) => {
+      console.log(thirdResult);
+    });
+  });
+});
+```
+
+正确做法 (使用链式调用):
+
+```
+doFirstThing()
+  .then(doSecondThing)
+  .then(doThirdThing)
+  .then((finalResult) => {
+    console.log(finalResult);
+  });
+```
+
+2. 总是处理拒绝情况
+
+忘记处理 Promise 的拒绝会导致"未捕获的 Promise 拒绝"错误.总是使用 .catch() 或 try/catch (在 async/await 中) 来处理错误.
+
+3. Promise 不是可取消的
+
+一旦创建, Promise 就无法取消.如果需要取消功能,可以考虑使用 AbortController 或其他模式.
+
+4. 回答常见的问题 (FAQ)
+
+**Q:then,catch 和 finally 序列能否顺序颠倒?**
+
+A:可以效果完全一样.但不建议这样做,最好按 then-catch-finally 的顺序编写程序.
+
+**Q:除了 then 块以外,其他两种块能否多次使用?**
+
+A:可以,finally 与 then 一样会按顺序执行,但是 catch 块只会执行第一个,除非 catch 块里有异常.所以最好只安排一个 catch 和 finally 块.
+
+**Q:then 块如何中断?**
+
+A:then 块默认会向下顺序执行,return 是不能中断的,可以通过 throw 来跳转至 catch 实现中断.
+
+**Q:什么时候适合用 Promise 而不是传统回调函数?**
+
+A:当需要多次顺序执行异步操作的时候,例如,如果想通过异步方法先后检测用户名和密码,需要先异步检测用户名,然后再异步检测密码的情况下就很适合 Promise.
+
+**Q:Promise 是一种将异步转换为同步的方法吗?**
+
+A:完全不是.Promise 只不过是一种更良好的编程风格.
+
+**Q:什么时候我们需要再写一个 then 而不是在当前的 then 接着编程?**
+
+A:当你又需要调用一个异步任务的时候.
+
+### Promise 与 async/await
+
+ES2017 引入了 async/await,它基于 Promise bing提供更直观的语法来处理异步操作.
+
+```
+async function fetchData() {
+  try {
+    const user = await getUser(123);
+    const posts = await getPosts(user.id);
+    console.log('用户帖子:', posts);
+  } catch (error) {
+    console.error('获取数据失败:', error);
+  }
+}
+```
+
+虽然 async/await 更易读,但理解 Promise 的基本概念仍然很重要,因为它是 async/await 的基础
+
+## JavaScript async/await
+
+
+
