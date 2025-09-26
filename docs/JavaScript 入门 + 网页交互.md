@@ -5379,7 +5379,7 @@ async function fetchData() {
 
 JavaScript 是单线程语言,意味着它一次只能执行一个任务.为了避免长时间运行的任务阻塞主线程,JavaScript 使用异步编程模型.
 
-**异步 vs 同步
+**异步 vs 同步**
 
 - **同步 (Synchronous) 编程:** 代码按顺序执行,前一个操作完成后才会执行下一个
 
@@ -5387,3 +5387,436 @@ JavaScript 是单线程语言,意味着它一次只能执行一个任务.为了�
 
 ![图片](./img/Asynchronous-Synchronous.png)
 
+```
+// 同步示例
+console.log('1');
+console.log('2');
+// 输出: 1, 2
+
+// 异步示例
+console.log('1');
+setTimeout(() => console.log('2'), 0);
+console.log('3');
+// 输出: 1, 3, 2
+```
+
+### 回调函数的问题
+
+在 async/wait 出现之前,JavaScript 主要使用回调函数处理异步操作,但这会导致 "回调地狱 (Callback Hell)".
+
+```
+getData(function(a) {
+  getMoreData(a, function(b) {
+    getMoreData(b, function(c) {
+      getMoreData(c, function(d) {
+        console.log(d);
+      });
+    });
+  });
+});
+```
+
+这种嵌套结构使得代码难以阅读和维护.
+
+### Promise 的引入
+
+ES6 引入了 Promise 对象来解决回调地狱问题.
+
+```
+function getData() {
+  return new Promise((resolve, reject) => {
+    // 异步操作
+    setTimeout(() => resolve('数据'), 1000);
+  });
+}
+
+getData()
+  .then(data => {
+    console.log(data);
+    return getMoreData(data);
+  })
+  .then(moreData => {
+    console.log(moreData);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+```
+
+虽然 Promise 改善了 回调问题,但 then() 链式调用仍然不够直观.
+
+### async/await 语法
+
+ES2017 引入了 async/await,它建立在 Promise 之上,让异步代码看起来像同步代码一样.
+
+**async 函数**
+
+在函数声明前添加 async 关键字,表示该函数是异步的:
+
+```
+async function fetchData() {
+  // 函数体
+}
+```
+
+async 函数总是返回一个 Promise:
+
+- 如果返回值不是 Promise,会自动包装成 resolved Promise
+
+- 如果抛出异常,会返回 rejected Promise
+
+**await 表达式**
+
+await 只能在 async 函数内部使用:
+
+```
+async function fetchData() {
+  const result = await somePromise;
+  console.log(result);
+}
+```
+
+await 会暂停 async 函数的执行,等待 Promise 完成:
+
+- 如果 Promise 被 resolve,返回 resolve 的值
+
+- 如果 Promise 被 reject,抛出错误 (可以用 try/catch 捕获)
+
+### 实际应用示例
+
+**基本用法**
+
+```
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function showMessage() {
+  console.log('开始');
+  await delay(1000);
+  console.log('1秒后');
+  await delay(1000);
+  console.log('又1秒后');
+}
+
+showMessage();
+```
+
+**错误处理**
+
+```
+async function fetchUserData() {
+  try {
+    const response = await fetch('https://api.example.com/user');
+    if (!response.ok) {
+      throw new Error('网络响应不正常');
+    }
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('获取数据失败:', error);
+  }
+}
+```
+
+**并行执行**
+
+如果需要并行执行多个异步操作,可以使用 Promise.all:
+
+```
+async function fetchMultipleData() {
+  const [userData, productData] = await Promise.all([
+    fetch('/api/user'),
+    fetch('/api/products')
+  ]);
+  
+  const user = await userData.json();
+  const products = await productData.json();
+  
+  return { user, products };
+}
+```
+
+### 常见问题与最佳实践
+
+1. 不要忘记 await
+
+```
+// 错误示例 - 忘记 await
+async function example() {
+  const data = fetch('/api'); // 缺少 await
+  console.log(data); // 输出 Promise 对象
+}
+
+// 正确示例
+async function example() {
+  const data = await fetch('/api');
+  console.log(data); // 输出实际数据
+}
+```
+
+2. 避免不必要的 async
+
+```
+// 不必要 - 函数内部没有 await
+async function unnecessaryAsync() {
+  return 42;
+}
+
+// 更简单的写法
+function simpleFunction() {
+  return 42;
+}
+```
+
+3. 顶层 await
+
+在模块顶层可以直接使用 await (ES2022 特性):
+
+```
+// 在模块中
+const data = await fetch('/api');
+console.log(data);
+```
+
+4. 性能考虑
+
+- 顺序执行 vs 并行执行:合理使用 Promise.all 提高性能
+
+- 错误处理:确保所有可能的错误都被捕获
+
+### async/await 与传统 Promise 对比
+
+|特性|async/await|Promise then/catch|
+|:-|:-|:-|
+|可读性|高,类似同步代码|中,链式调用|
+|错误处理|使用 try/catch|使用 .catch()|
+|调试|更容易，有明确的调用栈|较困难,调用栈可能不清晰|
+|代码结构|更扁平|嵌套或链式|
+
+### 总结
+
+async/await 是 JavaScript 异步编程的重大改进,它:
+
+1. 使异步代码更易读,更易维护
+
+2. 基于 Promise,与现有 Promise 代码兼容
+
+3. 提供了更直观的错误处理方式
+
+4. 改善了调试体验
+
+虽然 async/await 不是完全替代 Promise,但在大多数情况下,它提供了更优雅的解决方案. 理解 async/await 的工作原理和最佳实践,将大大提升我们的 JavaScript 异步编程能力.
+
+## JavaScript 代码规范
+
+所有的 JavaScript 项目适用同一种规范.
+
+### JavaScript 代码规范
+
+代码规范通常包括以下几个方面
+
+- 变量和函数的命名规则
+
+- 空格,缩进,注释的使用规则
+
+- 其他常用规范......
+
+规范的代码可以更易于阅读与维护.
+
+代码规范一般在开发前规定,可以跟我们的团队成员来协商设置.
+
+### 变量名
+
+变量名推荐使用驼峰法来命名 **(camelCase):**
+
+```
+firstName = "John";
+lastName = "Doe";
+
+price = 19.90;
+tax = 0.20;
+
+fullPrice = price + (price * tax);
+```
+
+### 空格与运算符
+
+通常运算符 (= + - * /) 前后需要添加空格:
+
+```
+var x = y + z;
+var values = ["Volvo", "Saab", "Fiat"];
+```
+
+### 代码缩进
+
+通常使用 4 个空格符号来缩进代码块:
+
+```
+function toCelsius(fahrenheit) {
+    return (5 / 9) * (fahrenheit - 32);
+}
+```
+
+***不推荐使用 TAB 键来缩进,因为不同编辑器 TAB 键的解析不一样.***
+
+### 语句规则
+
+简单语句的通用规则:
+
+- 一条语句通常以分号作为结束符.
+
+```
+var values = ["Volvo", "Saab", 
+ "Fiat"];var person = {    firstName: "John",    
+ lastName: "Doe",    age: 50,    eyeColor: 
+ "blue"};
+```
+
+复杂语句的通用规则:
+
+- 将左花括号放在第一行的结尾.
+
+- 左花括号前添加一空格.
+
+- 将右花括号独立放在一行.
+
+- 以分号结束一个复杂的声明.
+
+```
+function toCelsius(fahrenheit) {
+    return (5 / 9) * (fahrenheit - 32);
+}
+```
+
+循环
+
+```
+for (i = 0; i < 5; i++) {    x += i;}
+```
+
+条件语句
+
+```
+if (time < 20) {
+    greeting = "Good day";
+} else {    
+    greeting = "Good evening";
+}
+```
+
+### 对象规则
+
+对象定义的规则:
+
+- 将左花括号与类名放在同一行.
+
+- 冒号与属性值间有个空格.
+
+- 字符串使用双引号,数字不需要.
+
+- 最后一个属性-值对后面不需要添加括号.
+
+- 将右花括号独立放在一行，并以分号作为结束符号.
+
+```
+var person = {
+    firstName: "John",    
+    lastName: "Doe",
+    age: 50,
+    eyeColor: "blue"
+};
+```
+
+短的对象代码可以直接写成一行:
+
+```
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+```
+
+### 每行代码字符小于 80
+
+为了便于阅读每行字符建议小于数 80 个.
+
+如果一个 JavaScript 语句超过 80 个字符,建议在运算符或者逗号后换行.
+
+```
+document.getElementById("demo").innerHTML =
+    "Hello Runoob.";
+```
+
+### 命名规则
+
+一般很多代码语言的命名规则都是类似的,例如:
+
+- 变量和函数为小驼峰法标识,即除第一个单词之外,其他单词首字母大写 **(lowerCamelCase)**
+
+- 全局变量为大写 **(UPPERCASE)**
+
+- 常量 (如 PI) 为大写 **(UPPERCASE)**
+
+变量命名你是否使用这几种规则: **hyp-hens,camelCase,** 或 **under_scores?**
+
+**HTML 和 CSS 的横杠 (-) 字符:**
+
+HTML5 属性可以以 data- (如: data-quantity,data-price) 作为前缀
+
+CSS 使用 - 来连接属性名 (front-size).
+
+***- 通常在JavaScript 中被认为是减法,所以不允许使用.***
+
+**下划线:**
+
+很多程序员比较喜欢使用下划线 (如: data_of_birth),特别是在 SQL 数据库中.
+
+PHP 语言通常都使用下划线.
+
+**帕斯卡拼写法 (PascalCase):**
+
+帕斯卡拼写法 (PascalCase) 在 C 语言中使用较多.
+
+**驼峰法**:
+
+JavaScript 中通常推荐使用驼峰法, jQuery 及其他 JavaScript 库都使用驼峰法.
+
+***变量名不要以 $ 作为标记,会与很多 JavaScript 库冲突.***
+
+### HTML 载入外部 JavaScript 文件
+
+使用简洁的格式载入 JavaScript 文件 (type 属性不是必须的):
+
+```
+<script src="myscript.js">
+```
+
+### 使用 JavaScript 访问 HTML 元素
+
+一个糟糕的 HTML 格式可能会导致 JavaScript 执行错误.
+
+以下两个 JavaScript 语句会输出不同结果:
+
+```
+var obj =getElementById("Demo")
+var obj = getElementById("demo")
+```
+
+HTML 与 JavaScript 尽量使用相同的命名规则.
+
+[访问 HTML(5) 代码规范](https://www.runoob.com/html/html5-syntax.html)
+
+### 文件扩展名
+
+HTML 文件后缀可以是 **.html** (或 **.htm**)
+
+CSS 文件后缀是 **.css**
+
+JavaScript 文件后缀是 **.js**
+
+### 使用小写文件名
+
+大多 Web 服务器 (Apache,Unix) 对大小写敏感: london.jpg 不能通过 London.jpg 访问.
+
+其他 Web 服务器 (Microsoft,IIS) 对大小写不敏感: london.jpg 可以通过  London.jpg 或 london.jpg 访问.
+
+我们必须保持统一的风格,建议统一使用小写的文件名
