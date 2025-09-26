@@ -5377,5 +5377,13 @@ async function fetchData() {
 
 ## JavaScript async/await
 
+JavaScript 是单线程语言,意味着它一次只能执行一个任务.为了避免长时间运行的任务阻塞主线程,JavaScript 使用异步编程模型.
 
+**异步 vs 同步
+
+- **同步 (Synchronous) 编程:** 代码按顺序执行,前一个操作完成后才会执行下一个
+
+- **异步编程 (Asynchronous):** 某些操作被放入"任务队列",主线程继续执行后续代码,等主线程空闲时再处理队列中的任务.
+
+![图片](./img/Asynchronous-Synchronous.png)
 
