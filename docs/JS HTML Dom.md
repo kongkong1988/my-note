@@ -324,3 +324,153 @@ onload 和 onunload 事件可用于处理 cookie。
 <body onload="checkCookies()">
 ```
 
+### onchange 事件
+
+onchange 事件常结合对输入字段的验证来使用。
+
+下面是一个如何使用 onchange 的例子。当用户改变输入字段的内容时，会调用 upperCase() 函数。
+
+```
+<input type="text" id="fname"onchange="upperCase()">
+```
+
+### onmouseover 和 onmouseout 事件
+
+[onmouseover 和 onmouseout 事件可用于在用户的鼠标移至 HTML 元素上方或移出元素时触发函数。](https://www.runoob.com/js/js-htmldom-events.html)
+
+
+### onmousedown、onmouseup 以及 onclick 事件
+
+[onmousedown, onmouseup 以及 onclick 构成了鼠标点击事件的所有部分。首先当点击鼠标按钮时，会触发 onmousedown 事件，当释放鼠标按钮时，会触发 onmouseup 事件，最后，当完成鼠标点击时，会触发 onclick 事件。](https://www.runoob.com/js/js-htmldom-events.html)
+
+### 更多实例
+
+[onmousedown 和onmouseup](https://www.runoob.com/try/try.php?filename=trydhtml_event_onmousedown)
+
+当用户按下鼠标时,更换一幅图像.
+
+[onload](https://www.runoob.com/try/try.php?filename=trydhtml_event_onload)
+
+当页面完成加载时,显示一个提示框.
+
+[onfocus](https://www.runoob.com/try/try.php?filename=tryjsref_onfocus)
+
+当输入字段获得焦点时,改变其背景色.
+
+[鼠标事件](https://www.runoob.com/try/try.php?filename=trydhtml_event_onmouse)
+
+当指针移动到元素上方时,改变其颜色;当指针移出文本后,会再次改变其颜色.
+
+## DOM EventListener
+
+### addEventListener() 方法
+
+```
+document.getElementById("myBtn").addEventListener("click", displayDate);
+```
+
+addEventListener() 方法用于向指定元素添加事件句柄。
+
+addEventListener() 方法添加的事件句柄不会覆盖已存在的事件句柄。
+
+你可以向一个元素添加多个事件句柄。
+
+你可以向同个元素添加多个同类型的事件句柄，如：两个 "click" 事件。
+
+你可以向任何 DOM 对象添加事件监听，不仅仅是 HTML 元素。如： window 对象。
+
+addEventListener() 方法可以更简单的控制事件（冒泡与捕获）。
+
+当你使用 addEventListener() 方法时, JavaScript 从 HTML 标记中分离开来，可读性更强， 在没有控制HTML标记时也可以添加事件监听。
+
+你可以使用 removeEventListener() 方法来移除事件的监听。
+
+### 语法
+
+```
+element.addEventListener(event, function, useCapture);
+```
+
+***注意:不要使用"on"前缀.例如,使用"click",而不是使用"onclick".***
+
+### 向元素添加事件句柄
+
+```
+element.addEventListener("click", function(){ alert("Hello World!"); });
+```
+
+可以使用函数名,来引用外部函数:
+
+```
+element.addEventListener("click", myFunction);
+
+function myFunction() {    
+		alert ("Hello World!");
+}
+```
+
+### 向同一个元素中添加多个事件句柄
+
+addEventListener() 方法允许向同一个元素添加多个事件，且不会覆盖已存在的事件：
+
+```
+element.addEventListener("click", myFunction);element.addEventListener("click", mySecondFunction);
+```
+
+可以向同个元素添加不同类型的事件：
+
+```
+element.addEventListener("mouseover", myFunction);
+element.addEventListener("click", mySecondFunction);
+element.addEventListener("mouseout", myThirdFunction);
+```
+
+### 向 Window 对象添加事件句柄
+
+addEventListener() 方法允许你在 HTML DOM 对象添加事件监听， HTML DOM 对象如： HTML 元素, HTML 文档, window 对象。或者其他支持的事件对象如: xmlHttpRequest 对象。
+
+```
+window.addEventListener("resize", function(){
+    document.getElementById("demo").innerHTML = sometext;
+});
+```
+
+###传递参数
+
+当传递参数时,使用'匿名函数'调用带参数的函数:
+
+```
+element.addEventListener("click", function(){ myFunction(p1, p2); });
+```
+
+### 事件冒泡或事件捕获?
+
+事件传递有两种方式：冒泡与捕获。
+
+事件传递定义了元素事件触发的顺序。 如果你将 <p> 元素插入到 <div> 元素中，用户点击 <p> 元素, 哪个元素的 "click" 事件先被触发呢？
+
+在 冒泡 中，内部元素的事件会先被触发，然后再触发外部元素，即： <p> 元素的点击事件先触发，然后会触发 <div> 元素的点击事件。
+
+在 捕获 中，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： <div> 元素的点击事件先触发 ，然后再触发 <p> 元素的点击事件。
+
+addEventListener() 方法可以指定 "useCapture" 参数来设置传递类型：
+
+    addEventListener(event, function, useCapture);   
+
+默认值为 false, 即冒泡传递，当值为 true 时, 事件使用捕获传递。
+
+```
+document.getElementById("myDiv").addEventListener("click", myFunction, true);
+```
+
+### removeEventListener() 方法
+
+removeEventListener() 方法移除由 addEventListener() 方法添加的事件句柄:
+
+```
+element.removeEventListener("mousemove", myFunction);
+```
+
+### HTML DOM 事件对象参考手册
+
+所有 HTML DOM 事件,可以查看完整的[HTML DOM Event 对象参考手册](https://www.runoob.com/jsref/dom-obj-event.html).
