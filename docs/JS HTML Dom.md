@@ -77,7 +77,7 @@ var x=document.getElementsByClassName("intro");
 
 - 如何添加或删除 HTML 元素
 
-## JavaScript HTML DOM 改变 HTML 内容
+## JavaScript HTML DOM 改变 - HTML 内容
 
 HTML DOM 允许 JavaScript 改变 HTML 元素的内容.
 
@@ -85,5 +85,159 @@ HTML DOM 允许 JavaScript 改变 HTML 元素的内容.
 
 JavaScript 能够创建动态的 HTML 内容:
 
-
+### 改变 HTML 输出流
  
+JavaScript 能够创建动态的 HTML 内容.
+
+在 JavaScript 中,document.write() 可用于直接想 HTML 输出流写内容.
+
+```
+<!DOCTYPE html><html>
+<body>
+<script>
+document.write(Date());
+</script>
+</body>
+</html>
+```
+
+***绝对不要在文档(DOM)加载完成后使用 document.write().这会覆盖该文档.
+
+### 改变 HTML 内容
+
+修改 HTML 内容的最简单的方法是使用 innerHTML 属性.
+
+如需改变 HTML 元素的内容,请使用这个语法:
+
+    document.getElementById(id).innerHTML=新的 HTML
+
+本例改变了`<p>`元素的内容:
+
+```
+<html>
+<body>
+<p id="p1">Hello World!</p>
+<script>
+document.getElementById("p1").innerHTML="新文本!";
+</script>
+</body>
+</html>
+```
+
+本例改变了`<h1>`元素的内容:
+
+```
+<!DOCTYPE html><html>
+<body>
+<h1 id="header">Old Header</h1>
+<script>
+	var element=document.getElementById("header");element.innerHTML="新标题";
+</script>
+</body>
+</html>
+```
+
+实例讲解:
+
+- 上面的 HTML 文档含有 id="header"的`<h1>`元素
+
+- 我们使用 HTML DOM 来获得 id="header"的元素
+
+- JavaScript 更改次元素的内容(innerHTML)
+
+### 改变 HTML 属性
+
+如需改变 HTML 元素的属性,请使用这个语法:
+
+    document.getElementById(id).attribute=新属性值
+
+本例改变了 `<img>` 元素的 src 属性:
+
+```
+<!DOCTYPE html><html>
+<body>
+<img id="image" src="smiley.gif">
+<script>
+document.getElementById("image").src="landscape.jpg";
+</script>
+</body>
+</html>
+```
+
+实例讲解:
+
+- 上面的HTML 文档含有 id="image"的`<img>`元素
+
+- 我们使用 HTML DOM 来获得 id="image"的元素
+
+- JavaScript 更改次元素的属性 (把"smiley.gif"改为"landscape.jpg")
+
+## JavaScript HTML DOM 改变 CSS
+
+HTML DOM 允许 JavaScript 改变 HTML 元素的样式.
+
+### 改变 HTML 样式
+
+如需改变 HTML 元素的样式,请使用这个语法:
+
+    document.getElementById(id).style.property=新样式
+
+下面的例子会改变 `<p>` 元素的样式:
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+ 
+<p id="p1">Hello World!</p>
+<p id="p2">Hello World!</p>
+<script>
+document.getElementById("p2").style.color="blue";
+document.getElementById("p2").style.fontFamily="Arial";
+document.getElementById("p2").style.fontSize="larger";
+</script>
+<p>以上段落通过脚本修改。</p>
+ 
+</body>
+</html>
+```
+
+### 使用事件
+
+HTML DOM 允许我们通过出发事件来执行代码.
+
+比如以下事件:
+
+- 元素被点击
+
+- 页面加载完成
+
+- 输入框被修改.
+
+- ......
+
+本例改变了 id="id1" 的 HTML 元素的样式,当用户点击按钮时:
+
+```
+<!DOCTYPE html><html><body><h1 id="id1">我的标题 1</h1>
+	<button type="button" onclick="document.getElementById('id1').style.color='red'">
+	点我!</button></body></html>
+```
+
+## JavaScript HTML DOM 事件
+
+HTML DOM 使 JavaScript 有能力对 HTML 事件做出反应.
+
+[实例](https://www.runoob.com/js/js-htmldom-events.html)
+
+### 对事件做出反应
+
+我们可以在事件发生时执行 JavaScript,比如当用户在 HTML 元素上点击时.
+
+如需在用户点击某个元素时执行代码,请向一个 HTML 事件属性添加 JavaScript 代码:
+
+    
